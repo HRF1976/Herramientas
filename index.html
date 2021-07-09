@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/asistente.css" rel="stylesheet">
+    <script src="./js/asis.js"></script>
+    <title>Cálculos auxiliares</title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a href="#infoBasica" class="active">INFO BÁSICA</a>
+        </li>
+        <li>
+            <a href="#cuentasRapidas" class="active">CUENTAS RÁPIDAS</a>
+        </li>
+
+        <li>
+            <a href="#pami" class="active">OBRA SOCIAL</a>
+        </li>
+        <li>
+            <a href="#Ajustes" class="active">AJUSTES</a>
+        </li>
+    </ul>
+    <div class="header" style="padding: 10px;">
+        <h1>Asistente de Cómputos</h1>
+
+    </div>
+    <section id="infoBasica">
+        <div class="col-12" style="padding: 5px;">
+            <h1>Información básica</h1>
+            <p style="padding: 5px;">Seleccione el período a consultar</p>
+        </div>
+        <div class="row col-12" style="padding: 5px;">
+            <div class="col-3 row" style="padding: 5px;">
+                <select class="col-6" name="mes" id="mes">
+                    <option value='01'>Enero</option>
+                    <option value='02'>Febrero</option>
+                    <option value='03'>Marzo</option>
+                    <option value='04'>Abril</option>
+                    <option value='05'>Mayo</option>
+                    <option value='06'>Junio</option>
+                    <option value='07'>Julio</option>
+                    <option value='08'>Agosto</option>
+                    <option value='09'>Septiembre</option>
+                    <option value='10'>Octubre</option>
+                    <option value='11'>Noviembre</option>
+                    <option value='12'>Diciembre</option>
+                </select>
+                <select name="año" class="col-6" id="año">
+                    <option value='2004'>2004</option>
+                    <option value='2005'>2005</option>
+                    <option value='2006'>2006</option>
+                    <option value='2007'>2007</option>
+                    <option value='2008'>2008</option>
+                    <option value='2009'>2009</option>
+                    <option value='2010'>2010</option>
+                    <option value='2011'>2011</option>
+                    <option value='2012'>2012</option>
+                    <option value='2013'>2013</option>
+                    <option value='2014'>2014</option>
+                    <option value='2015'>2015</option>
+                    <option value='2016'>2016</option>
+                    <option value='2017'>2017</option>
+                    <option value='2018'>2018</option>
+                    <option value='2019'>2019</option>
+                    <option value='2020'>2020</option>
+                    <option value='2021'>2021</option>
+
+                </select>
+                <div class="col-3">
+                    <button id="infoBasica"
+                        onclick="verInfoBasica(document.getElementById('mes').value,document.getElementById('año').value)">Ver</button>
+                </div>
+            </div>
+
+            <div class="col-2 aside">
+                <h2>Haber mínimo</h2>
+                <p id="minima"></p>
+            </div>
+            <div class="col-2 aside">
+                <h2>Haber máximo</h2>
+                <p id="tope"></p>
+            </div>
+            <div class="col-2 aside">
+                <h2>PBU</h2>
+                <p id='pbu'></p>
+            </div>
+
+
+        </div>
+        <div class="col-12">
+            <div class="col-3 row" style="padding: 0px;">
+                <p style="padding: 0px;"></p>
+            </div>
+            <div class="col-2 aside">
+                <h2>Movilidad 24.241</h2>
+                <p id="movLg"></p>
+            </div>
+            <div class="col-2 aside">
+                <h2>Movilidad Docentes</h2>
+                <p id="coefDocente"></p>
+            </div>
+            <div class="col-2 aside">
+                <h2>Movilidad Investigadores</h2>
+                <p id="coefInv"></p>
+            </div>
+            <div class="col-2 aside">
+                <h2>Movilidad Luz y Fuerza</h2>
+                <p id="coefLyF"></p>
+            </div>
+        </div>
+
+        <div class="foter">
+            <p id="nota">La información de la consulta aparecerá aquí</p>
+        </div>
+    </section>
+    <section id="cuentasRapidas">
+        <div class="col-12" style="padding: 5px;">
+            <h1>Cuentas rápidas</h1>
+            <p style="padding: 5px;">Avanzar y retroceder entre las movilidades de Ley General con un monto</p>
+        </div>
+        <div class="col-3 row" style="padding: 5px;">
+            <h4>Desde</h4>
+            <select class="col-6" name="mes" id="mesDesde">
+                <option value='01'>Enero</option>
+                <option value='02'>Febrero</option>
+                <option value='03'>Marzo</option>
+                <option value='04'>Abril</option>
+                <option value='05'>Mayo</option>
+                <option value='06'>Junio</option>
+                <option value='07'>Julio</option>
+                <option value='08'>Agosto</option>
+                <option value='09'>Septiembre</option>
+                <option value='10'>Octubre</option>
+                <option value='11'>Noviembre</option>
+                <option value='12'>Diciembre</option>
+            </select>
+            <select name="año" class="col-6" id="añoDesde">
+                <option value='2004'>2004</option>
+                <option value='2005'>2005</option>
+                <option value='2006'>2006</option>
+                <option value='2007'>2007</option>
+                <option value='2008'>2008</option>
+                <option value='2009'>2009</option>
+                <option value='2010'>2010</option>
+                <option value='2011'>2011</option>
+                <option value='2012'>2012</option>
+                <option value='2013'>2013</option>
+                <option value='2014'>2014</option>
+                <option value='2015'>2015</option>
+                <option value='2016'>2016</option>
+                <option value='2017'>2017</option>
+                <option value='2018'>2018</option>
+                <option value='2019'>2019</option>
+                <option value='2020'>2020</option>
+                <option value='2021'>2021</option>
+
+            </select>
+
+        </div>
+        <div class="col-3 row" style="padding: 5px;">
+            <h4>Hasta</h4>
+            <select class="col-6" name="mes" id="mesHasta">
+                <option value='01'>Enero</option>
+                <option value='02'>Febrero</option>
+                <option value='03'>Marzo</option>
+                <option value='04'>Abril</option>
+                <option value='05'>Mayo</option>
+                <option value='06'>Junio</option>
+                <option value='07'>Julio</option>
+                <option value='08'>Agosto</option>
+                <option value='09'>Septiembre</option>
+                <option value='10'>Octubre</option>
+                <option value='11'>Noviembre</option>
+                <option value='12'>Diciembre</option>
+            </select>
+            <select name="año" class="col-6" id="añoHasta">
+                <option value='2004'>2004</option>
+                <option value='2005'>2005</option>
+                <option value='2006'>2006</option>
+                <option value='2007'>2007</option>
+                <option value='2008'>2008</option>
+                <option value='2009'>2009</option>
+                <option value='2010'>2010</option>
+                <option value='2011'>2011</option>
+                <option value='2012'>2012</option>
+                <option value='2013'>2013</option>
+                <option value='2014'>2014</option>
+                <option value='2015'>2015</option>
+                <option value='2016'>2016</option>
+                <option value='2017'>2017</option>
+                <option value='2018'>2018</option>
+                <option value='2019'>2019</option>
+                <option value='2020'>2020</option>
+                <option value='2021'>2021</option>
+
+            </select>
+        </div>
+        <div class="col-3 row" style="padding: 5px;">
+            <h4>Monto</h4>
+            <input id="monto" type="number">
+        </div>
+        <div class="col-12">
+            <button id="calcMov"
+                onclick="Calcular(document.getElementById('mesDesde').value,document.getElementById('añoDesde').value,document.getElementById('mesHasta').value,document.getElementById('añoHasta').value,document.getElementById('monto').value)">Calcular</button>
+        </div>
+        <div class="col-12" style="padding: 5px;">
+            <div class="col-4" style="padding: 5px;">
+                <h4 style="vertical-align: middle; margin: 5px;">Resultado</h4>
+                <input type="number" id="result" readonly>
+
+            </div>
+        </div>
+    </section>
+    <section id="pami">
+        <div class="col-12" style="background-color: #0099cc">
+            <div class="col-12" style="padding: 5px;">
+                <h1>Obra Social</h1>
+                <p style="padding: 5px;">Obtener el valor del descuento de la Obra Social Pami</p>
+            </div>
+            <div class="col-3 row" style="padding: 5px;">
+                <h4>Periodo</h4>
+                <select class="col-6" name="mes" id="mesPami">
+                    <option value='01'>Enero</option>
+                    <option value='02'>Febrero</option>
+                    <option value='03'>Marzo</option>
+                    <option value='04'>Abril</option>
+                    <option value='05'>Mayo</option>
+                    <option value='06'>Junio</option>
+                    <option value='07'>Julio</option>
+                    <option value='08'>Agosto</option>
+                    <option value='09'>Septiembre</option>
+                    <option value='10'>Octubre</option>
+                    <option value='11'>Noviembre</option>
+                    <option value='12'>Diciembre</option>
+                </select>
+                <select name="año" class="col-6" id="añoPami">
+                    <option value='2004'>2004</option>
+                    <option value='2005'>2005</option>
+                    <option value='2006'>2006</option>
+                    <option value='2007'>2007</option>
+                    <option value='2008'>2008</option>
+                    <option value='2009'>2009</option>
+                    <option value='2010'>2010</option>
+                    <option value='2011'>2011</option>
+                    <option value='2012'>2012</option>
+                    <option value='2013'>2013</option>
+                    <option value='2014'>2014</option>
+                    <option value='2015'>2015</option>
+                    <option value='2016'>2016</option>
+                    <option value='2017'>2017</option>
+                    <option value='2018'>2018</option>
+                    <option value='2019'>2019</option>
+                    <option value='2020'>2020</option>
+                    <option value='2021'>2021</option>
+
+                </select>
+            </div>
+            <div class="col-3 row" style="padding: 5px;">
+                <h4>Monto</h4>
+                <input id="montoOs" type="number">
+            </div>
+            <div class="col-12">
+                <button id="calcOs"
+                    onclick="pami(document.getElementById('mesPami').value,document.getElementById('añoPami').value,document.getElementById('montoOs').value)">Calcular</button>
+            </div>
+            <div class="col-12" style="padding: 5px;">
+                <div class="col-4" style="padding: 5px;">
+                    <h4 style="vertical-align: middle; margin: 5px;">Resultado</h4>
+                    <input type="number" id="resultOs" readonly>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="Ajustes">
+        <div class="col-12" style="padding: 5px;">
+            <h1>Ajustes</h1>
+            <p style="padding: 5px;">Calcular la diferencia entre dos liquidaciones en un lapso de tiempo</p>
+        </div>
+        <div class="col-3 row" style="padding: 5px;">
+            <h4>Desde</h4>
+            <select class="col-6" name="mes" id="mesDesdeA">
+                <option value='01'>Enero</option>
+                <option value='02'>Febrero</option>
+                <option value='03'>Marzo</option>
+                <option value='04'>Abril</option>
+                <option value='05'>Mayo</option>
+                <option value='06'>Junio</option>
+                <option value='07'>Julio</option>
+                <option value='08'>Agosto</option>
+                <option value='09'>Septiembre</option>
+                <option value='10'>Octubre</option>
+                <option value='11'>Noviembre</option>
+                <option value='12'>Diciembre</option>
+            </select>
+            <select name="año" class="col-6" id="añoDesdeA">
+                <option value='2004'>2004</option>
+                <option value='2005'>2005</option>
+                <option value='2006'>2006</option>
+                <option value='2007'>2007</option>
+                <option value='2008'>2008</option>
+                <option value='2009'>2009</option>
+                <option value='2010'>2010</option>
+                <option value='2011'>2011</option>
+                <option value='2012'>2012</option>
+                <option value='2013'>2013</option>
+                <option value='2014'>2014</option>
+                <option value='2015'>2015</option>
+                <option value='2016'>2016</option>
+                <option value='2017'>2017</option>
+                <option value='2018'>2018</option>
+                <option value='2019'>2019</option>
+                <option value='2020'>2020</option>
+                <option value='2021'>2021</option>
+
+            </select>
+
+        </div>
+        <div class="col-3 row" style="padding: 5px;">
+            <h4>Hasta</h4>
+            <select class="col-6" name="mes" id="mesHastaA">
+                <option value='01'>Enero</option>
+                <option value='02'>Febrero</option>
+                <option value='03'>Marzo</option>
+                <option value='04'>Abril</option>
+                <option value='05'>Mayo</option>
+                <option value='06'>Junio</option>
+                <option value='07'>Julio</option>
+                <option value='08'>Agosto</option>
+                <option value='09'>Septiembre</option>
+                <option value='10'>Octubre</option>
+                <option value='11'>Noviembre</option>
+                <option value='12'>Diciembre</option>
+            </select>
+            <select name="año" class="col-6" id="añoHastaA">
+                <option value='2004'>2004</option>
+                <option value='2005'>2005</option>
+                <option value='2006'>2006</option>
+                <option value='2007'>2007</option>
+                <option value='2008'>2008</option>
+                <option value='2009'>2009</option>
+                <option value='2010'>2010</option>
+                <option value='2011'>2011</option>
+                <option value='2012'>2012</option>
+                <option value='2013'>2013</option>
+                <option value='2014'>2014</option>
+                <option value='2015'>2015</option>
+                <option value='2016'>2016</option>
+                <option value='2017'>2017</option>
+                <option value='2018'>2018</option>
+                <option value='2019'>2019</option>
+                <option value='2020'>2020</option>
+                <option value='2021'>2021</option>
+
+            </select>
+        </div>
+        <div class="col-12">
+            <div class="col-2 row" style="padding: 5px;">
+                <h4>Imoprte original</h4>
+                <input id="montoA" type="number">
+
+            </div>
+            <div class="col-2 row" style="padding: 5px;">
+                <h4>Importe ajustado</h4>
+                <input id="montoAjustado" type="number">
+            </div>
+        </div>
+
+        <div class="col-12">
+            <button id="calcAjuste"
+                onclick="liquidarTabla(document.getElementById('mesDesdeA').value,document.getElementById('añoDesdeA').value,document.getElementById('mesHastaA').value,document.getElementById('añoHastaA').value,document.getElementById('montoA').value,document.getElementById('montoAjustado').value)">Ver
+                liquidación</button>
+            <button onclick="exportTablaAjustesAExcel()">Exportar a Excel</button>
+            <button onclick="document.location.reload()">Borrar todo</button>
+        </div>
+    </section>
+    <section id="2020">
+        <div class="col-12" style="background-color: #0099cc">
+            <div class="col-12" style="padding: 5px;">
+                <h1>Marzo 2020 - Marzo 2021</h1>
+                <p style="padding: 5px;">Atravesar este año fue complicado por diversos motivos. La movilidad no fue la
+                    excepción</p>
+            </div>
+            <div class="col-12">
+                <div class="col-2 row" style="padding: 5px;">
+                    <h4>PBU</h4>
+                    <input id="PBU" type="number">
+
+                </div>
+                <div class="col-2 row" style="padding: 5px;">
+                    <h4>PC</h4>
+                    <input id="PC" type="number">
+                </div>
+
+                <div class="col-2 row" style="padding: 5px;">
+                    <h4>PAP</h4>
+                    <input id="PAP" type="number">
+                </div>
+                <div class="col-3 row" style="padding: 5px;">
+                    <h4>Desde-Hasta</h4>
+                    <select name="2020" class="col-12" id="mov2020">
+                        <option value='202002'>Desde Febrero-2020 a Abril-2021</option>
+                        <option value='202002'>Desde Abril-2021 a Febrero-2020</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12">
+                <button id="verMov2020" onclick="">Ver movilidades</button>
+                <button onclick="exportTableToExcel('tablaMov2020')">Exportar a Excel</button>
+                <button onclick="document.location.reload()">Borrar todo</button>
+            </div>
+            <table id="tablaMov2020">
+                <tr>
+                    <th>Período</th>
+                    <th>PBU</th>
+                    <th>PC</th>
+                    <th>PAP</th>
+                    <th>Supl</th>
+                </tr>
+                <tr>
+                    <td>02-2020</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>03-2020</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>06-2020</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>09-2020</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>12-2020</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>03-2021</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>04-2021</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </table>
+
+    </section>
+
+</body>
+
+</html>
