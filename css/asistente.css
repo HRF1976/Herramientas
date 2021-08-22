@@ -7,6 +7,10 @@
     border: black solid 1px;
 } */
 
+h4 {
+    padding-bottom: 0%;
+}
+
 html {
     font-family: "Lucida Sans", sans-serif;
 }
@@ -198,6 +202,10 @@ input {
     text-align: center;
     font-size: 12px;
     padding: 15px;
+}
+.side-button {
+    class: .col-1
+    
 }
 .foter {
     background-color: #0099cc;

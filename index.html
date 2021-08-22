@@ -29,6 +29,7 @@
         <h1>Asistente de Cómputos</h1>
 
     </div>
+<hr/>
     <section id="infoBasica">
         <div class="col-12" style="padding: 5px;">
             <h1>Información básica</h1>
@@ -118,11 +119,13 @@
             <p id="nota">La información de la consulta aparecerá aquí</p>
         </div>
     </section>
+    <hr/>
     <section id="cuentasRapidas">
         <div class="col-12" style="padding: 5px;">
             <h1>Cuentas rápidas</h1>
             <p style="padding: 5px;">Avanzar y retroceder entre las movilidades de Ley General con un monto</p>
         </div>
+        <div class="col-12">
         <div class="col-3 row" style="padding: 5px;">
             <h4>Desde</h4>
             <select class="col-6" name="mes" id="mesDesde">
@@ -204,6 +207,7 @@
             <h4>Monto</h4>
             <input id="monto" type="number">
         </div>
+        </div>
         <div class="col-12">
             <button id="calcMov"
                 onclick="Calcular(document.getElementById('mesDesde').value,document.getElementById('añoDesde').value,document.getElementById('mesHasta').value,document.getElementById('añoHasta').value,document.getElementById('monto').value)">Calcular</button>
@@ -216,8 +220,9 @@
             </div>
         </div>
     </section>
+<hr/>
     <section id="pami">
-        <div class="col-12" style="background-color: #0099cc">
+        <div class="col-12"  style="padding: 8px; margin-bottom: 5px; background-color: #0099cc">
             <div class="col-12" style="padding: 5px;">
                 <h1>Obra Social</h1>
                 <p style="padding: 5px;">Obtener el valor del descuento de la Obra Social Pami</p>
@@ -277,11 +282,13 @@
             </div>
         </div>
     </section>
+<hr>
     <section id="Ajustes">
         <div class="col-12" style="padding: 5px;">
             <h1>Ajustes</h1>
             <p style="padding: 5px;">Calcular la diferencia entre dos liquidaciones en un lapso de tiempo</p>
         </div>
+        <div class="col-12">
         <div class="col-3 row" style="padding: 5px;">
             <h4>Desde</h4>
             <select class="col-6" name="mes" id="mesDesdeA">
@@ -359,6 +366,7 @@
 
             </select>
         </div>
+        </div>
         <div class="col-12">
             <div class="col-2 row" style="padding: 5px;">
                 <h4>Imoprte original</h4>
@@ -379,8 +387,9 @@
             <button onclick="document.location.reload()">Borrar todo</button>
         </div>
     </section>
+<hr>
     <section id="2020">
-        <div class="col-12" style="background-color: #0099cc">
+        <div class="col-12" style="margin-bottom: 8px; background-color: #0099cc">
             <div class="col-12" style="padding: 5px;">
                 <h1>Marzo 2020 - Marzo 2021</h1>
                 <p style="padding: 5px;">Atravesar este año fue complicado por diversos motivos. La movilidad no fue la
@@ -388,7 +397,7 @@
             </div>
             <div class="col-12">
                 <div class="col-2 row" style="padding: 5px;">
-                    <h4>PBU</h4>
+                    <h4>PBU ó 001-xxx</h4>
                     <input id="PBU" type="number">
 
                 </div>
@@ -408,9 +417,54 @@
                         <option value='202002'>Desde Abril-2021 a Febrero-2020</option>
                     </select>
                 </div>
+                <div class="col-3 row" style="padding: 5px">
+                    <h4>Porcentaje de beneficio</h4>
+                    <select class="col-12" id="porcBenef" style="text-align-last: right;">
+                        <option value=1>100</option>
+                        <option value=0.7143>71,43</option>
+                        <option value=0.5556>55,56</option>
+                        <option value=0.50>50</option>
+                        <option value=0.4546>45,46</option>
+                        <option value=0.3848>38,48</option>
+                        <option value=0.3571>35,71</option>
+                        <option value=0.3335>33,35</option>
+                        <option value=0.3333>33,33</option>
+                        <option value=0.2944>29,44</option>
+                        <option value=0.2877>28,57</option>
+                        <option value=0.2778>27,78</option>
+                        <option value=0.2629>26,29</option>
+                        <option value=0.2570>25</option>
+                        <option value=0.2384>23,84</option>
+                        <option value=0.2273>22,73</option>
+                        <option value=0.2272>22,22</option>
+                        <option value=0.2170>21,7</option>
+                        <option value=0.2000>20</option>
+                        <option value=0.2070>20</option>
+                        <option value=0.1974>19,24</option>
+                        <option value=0.1878>18,18</option>
+                        <option value=0.1678>16,68</option>
+                        <option value=0.1677>16,67</option>
+                        <option value=0.1578>15,38</option>
+                        <option value=0.1472>14,72</option>
+                        <option value=0.1479>14,29</option>
+                        <option value=0.1373>13,33</option>
+                        <option value=0.1315>13,15</option>
+                        <option value=0.1250>12,5</option>
+                        <option value=0.1172>11,92</option>
+                        <option value=0.1176>11,76</option>
+                        <option value=0.1111>11,11</option>
+                        <option value=0.1085>10,85</option>
+                        <option value=0.1053>10,53</option>
+                        <option value=0.10>10</option>
+                        <option value=0.952>9,52</option>
+                        <option value=0.87>8,7</option>
+                        <option value=0.8>8</option>
+
+                    </select>
+                </div>
             </div>
             <div class="col-12">
-                <button id="verMov2020" onclick="">Ver movilidades</button>
+                <button id="verMov2020" onclick="deFebAMar()">Ver movilidades</button>
                 <button onclick="exportTableToExcel('tablaMov2020')">Exportar a Excel</button>
                 <button onclick="document.location.reload()">Borrar todo</button>
             </div>
@@ -474,8 +528,42 @@
                 </tr>
 
             </table>
-
+        </div>
     </section>
+<hr style="margin: 8px;">
+    <section id="Pensiones">
+        <div class="col-12" style="padding: 5px;">
+            <h1>Pensiones</h1>
+            <p style="padding: 5px;">Obener los porcentajes de Cómputo y Beneficios según los copartícipes</p>
+        </div>
+        <div class="col-1 row" style="padding: 5px;">
+            <h4>Cónyuges</h4>
+            <select class="col-12" name="cony" id="conyuges">
+                <option value='01'>0</option>
+                <option value='02'>1</option>
+                <option value='03'>2</option>
+            </select>
+        </div>
+        <div class="col-1 row" style="padding: 5px;">
+            <h4>Hijos</h4>
+            <select name="hijos" class="col-12" id="hijos">
+                <option value='2004'>0</option>
+                <option value='2005'>1</option>
+                <option value='2006'>2</option>
+                <option value='2007'>3</option>
+                <option value='2008'>4</option>
+                <option value='2009'>5</option>
+                <option value='2010'>6</option>
+                <option value='2011'>7</option>
+                <option value='2012'>8</option>
+                <option value='2013'>9</option>
+                <option value='2014'>10</option>
+            </select>    
+        </div>
+        <button class="side-button col-1">
+            Ver porcentajes
+        </button>
+            
 
 </body>
 
