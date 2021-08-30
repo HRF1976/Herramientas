@@ -532,16 +532,15 @@ function deFebAMar(pbu, pc, pap) {
         f = f + 1
 
     } while (f < 6);
-
+//SOLO PBU
     if (pc == 0) {
         if (pap == 0) {
 
             pbu = pbu + supl
             pbu = pbu * coeficienteMovilidad[nroPeríodo]
             supl = 0
-            console.log(coeficienteMovilidad[nroPeríodo])
 
-
+//PBU Y PAP
         } else {
             console.log("PBU y PAP")
             if (pbu > 8708) {
@@ -558,6 +557,7 @@ function deFebAMar(pbu, pc, pap) {
                 pap = pap * coeficienteMovilidad[nroPeríodo]
             }
         }
+//PBU Y PC
     } else {
         if (pap == 0) {
             console.log("PBU y PC")
@@ -574,10 +574,25 @@ function deFebAMar(pbu, pc, pap) {
                 pbu = pbu * coeficienteMovilidad[nroPeríodo]
                 pc = pc * coeficienteMovilidad[nroPeríodo]
             }
+//PBU-PC-PAP
         } else {
-            console.log("PBU-PC-PAP")
+            var pcPap = pc + pap
+            var partPc = pc / pcPap
+            var partPap = pap / pcPap
+            if (pbu > 8708) {
+                pc = pc + supl * partPc
+                pap = pap + supl * partPap
+                supl = 0
+            } else {
+                pbu = 8707.78 * coeficienteMovilidad[nroPeríodo]
+                pc = (pc + (1233.10 * partPc)) * coeficienteMovilidad[nroPeríodo]
+                pap = (pap + (1233.10 * partPap)) * coeficienteMovilidad[nroPeríodo]
+                supl = 0
+            }
+
         }
     }
+//ESCRIBO RESULTADOS MZO Y ABRIL
     document.getElementById("tablaMov2020").rows[f].cells[1].textContent = pbu.toFixed(2)
     document.getElementById("tablaMov2020").rows[f].cells[2].textContent = pc.toFixed(2)
     document.getElementById("tablaMov2020").rows[f].cells[3].textContent = pap.toFixed(2)
