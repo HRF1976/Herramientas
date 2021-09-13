@@ -38,7 +38,7 @@ p {
 }
 
 ul {
-   
+
     list-style-type: none;
 
     margin: 0;
@@ -218,9 +218,9 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 80%;
-  }
-  
-  td, th {
+}
+
+td, th {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;

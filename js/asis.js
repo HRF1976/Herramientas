@@ -543,50 +543,72 @@ function deFebAMar(pbu, pc, pap) {
 //PBU Y PAP
         } else {
             console.log("PBU y PAP")
-            if (pbu > 8708) {
+            if (pbu >= 8144*porcent) {
                 pap = pap + supl
                 pbu = pbu * coeficienteMovilidad[nroPeríodo]
                 pap = pap * coeficienteMovilidad[nroPeríodo]
                 supl = 0
 
             } else {
-                pbu=8707.78
-                pap=pap+1233.10
-                supl=0
+                suplEntero=1796.35
+                cpbu=(pbu/8144.14).toFixed(2)
+                difPbu=563.64
+                difPcPap=1233.10*porcent
+                aRepartir=suplEntero*porcent-difPbu*cpbu
+                pbu=pbu+(difPbu*cpbu)
+                pap=pap+aRepartir
                 pbu = pbu * coeficienteMovilidad[nroPeríodo]
                 pap = pap * coeficienteMovilidad[nroPeríodo]
+                supl = 0
             }
         }
 //PBU Y PC
     } else {
         if (pap == 0) {
             console.log("PBU y PC")
-            if (pbu > 8708) {
+            if (pbu >= 8144*porcent) {
                 pc = pc + supl
                 pbu = pbu * coeficienteMovilidad[nroPeríodo]
                 pc = pc * coeficienteMovilidad[nroPeríodo]
                 supl = 0
 
             } else {
-                pbu=8707.78
-                pc=pc+1233.10
-                supl=0
+                suplEntero=1796.35
+                cpbu=(pbu/8144.14).toFixed(2)
+                difPbu=563.64
+                difPcPap=1233.10*porcent
+                aRepartir=suplEntero*porcent-difPbu*cpbu
+                pbu=pbu+(difPbu*cpbu)
+                pc=pc+aRepartir
                 pbu = pbu * coeficienteMovilidad[nroPeríodo]
                 pc = pc * coeficienteMovilidad[nroPeríodo]
+                supl = 0
             }
 //PBU-PC-PAP
         } else {
             var pcPap = pc + pap
             var partPc = pc / pcPap
             var partPap = pap / pcPap
-            if (pbu > 8708) {
+            if (pbu >= 8144*porcent) {
                 pc = pc + supl * partPc
                 pap = pap + supl * partPap
                 supl = 0
+                pbu = pbu * coeficienteMovilidad[nroPeríodo]
+                pc = pc * coeficienteMovilidad[nroPeríodo]
+                pap = pap * coeficienteMovilidad[nroPeríodo]
             } else {
-                pbu = 8707.78 * coeficienteMovilidad[nroPeríodo]
-                pc = (pc + (1233.10 * partPc)) * coeficienteMovilidad[nroPeríodo]
-                pap = (pap + (1233.10 * partPap)) * coeficienteMovilidad[nroPeríodo]
+                suplEntero=1796.35
+                cpbu=(pbu/8144.14).toFixed(2)
+                difPbu=563.64
+                difPcPap=1233.10*porcent
+                aRepartir=suplEntero*porcent-difPbu*cpbu
+                pbu=pbu+(difPbu*cpbu)
+                pc=pc+aRepartir*partPc
+                pap=pap+aRepartir*partPap
+
+                pbu = pbu * coeficienteMovilidad[nroPeríodo]
+                pc = pc * coeficienteMovilidad[nroPeríodo]
+                pap = pap * coeficienteMovilidad[nroPeríodo]
                 supl = 0
             }
 
