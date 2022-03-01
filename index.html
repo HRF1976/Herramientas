@@ -547,40 +547,56 @@
     </section>
 <hr style="margin: 8px;">
 
-<!--     <section id="Pensiones">
+    <section id="Pensiones">
         <div class="col-12" style="padding: 5px;">
             <h1>Pensiones</h1>
             <p style="padding: 5px;">Obener los porcentajes de Cómputo y Beneficios según los copartícipes</p>
         </div>
-        <div class="col-1 row" style="padding: 5px;">
+        <div class="col-12">
+                <div class="col-1 row" style="padding: 5px;">
             <h4>Cónyuges</h4>
-            <select class="col-12" name="cony" id="conyuges">
-                <option value='01'>0</option>
-                <option value='02'>1</option>
-                <option value='03'>2</option>
+            <select class="col-12" id="cónyuges" onchange="pensiones()">
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
             </select>
         </div>
         <div class="col-1 row" style="padding: 5px;">
             <h4>Hijos</h4>
-            <select name="hijos" class="col-12" id="hijos">
-                <option value='2004'>0</option>
-                <option value='2005'>1</option>
-                <option value='2006'>2</option>
-                <option value='2007'>3</option>
-                <option value='2008'>4</option>
-                <option value='2009'>5</option>
-                <option value='2010'>6</option>
-                <option value='2011'>7</option>
-                <option value='2012'>8</option>
-                <option value='2013'>9</option>
-                <option value='2014'>10</option>
+            <select name="hijos" class="col-12" id="hijos" onchange="pensiones()">
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+                <option value='7'>7</option>
+                <option value='8'>8</option>
+                <option value='9'>9</option>
+                <option value='10'>10</option>
             </select>    
         </div>
-        <button class="side-button col-2">
-            Ver porcentajes
-        </button>
- -->            
+        <div class="col-2 row" style="padding: 5px;">
+            <h4 style="text-align: center;">% de Cómputo</h4>
+            <input type="text" class="col-12" id="resPorcComp" readonly style="border: 0px; text-align: center; font-size: large;" value="100">
+        </div>
+        <div class="col-2 row" style="padding: 5px;">
+            <h4 style="text-align: center;">% Benef Cónyuge</h4>
+            <input type="text" class="col-12" id="resCónyuges" readonly style="border: 0px; text-align: center; font-size: large;" value="0">
+        </div>
+        <div class="col-2 row" style="padding: 5px;">
+            <h4 style="text-align: center;">% Benef Hijos</h4>
+            <input type="text" class="col-12" id="resHijos" readonly style="border: 0px; text-align: center; font-size: large;" value="0">
+        </div>
+    </div>
+        
+    </Section>
+        <hr>
+   
 
 </body>
-    
+<div class="footer col-12">
+    <h4>HF</h4>
+</div> 
 </html>

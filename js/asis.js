@@ -207,7 +207,7 @@ function liquidarTabla(mes, año, mHasta, aHasta, monto, montoA) {
     document.getElementById("tabla").rows[cuenta].cells[2].textContent = totimpA.toFixed(2).replace(".", ",");;
     document.getElementById("tabla").rows[cuenta].cells[3].textContent = totDif.toFixed(2).replace(".", ",");;
     document.getElementById("tabla").rows[cuenta].cells[0].textContent = "TOTALES";
-    window.scroll(0, 150)
+    // window.scroll(0, 150)
     console.log(liq);
     // window.open("tabla.html")
     // loadLiquidación();
@@ -634,6 +634,207 @@ function deFebAMar(pbu, pc, pap) {
     document.getElementById("tablaMov2020").rows[f].cells[4].textContent = supl.toFixed(2)
 
 }
+
+function pensiones(cony, hijos) {
+    cony = document.getElementById("cónyuges").value
+    hijos = document.getElementById("hijos").value
+    var cómputo=0
+    var bCony=0
+    var bHijos=0
+    console.log(cony)
+
+    if (cony=="0") {
+        switch (hijos) {
+            case "1":
+                cómputo=70
+                bCony=0
+                bHijos=100
+                break;
+            case "2":
+                cómputo=90
+                bCony=0
+                bHijos=50
+                break;
+            case "3":
+                cómputo=100
+                bCony=0
+                bHijos=33.33
+                break;
+            case "4":
+                cómputo=100
+                bCony=0
+                bHijos=25
+                break;
+            case "5":
+            cómputo=100
+                bCony=0
+                bHijos=20
+                break;
+            case "6":
+            cómputo=100
+                bCony=0
+                bHijos=16.67
+                break;
+            case "7":
+                cómputo=100
+                    bCony=0
+                    bHijos=14.29
+                    break;
+            case "8":
+                cómputo=100
+                    bCony=0
+                    bHijos=12.50
+                    break;
+            case "9":
+                cómputo=100
+                    bCony=0
+                    bHijos=11.11
+                    break;
+            case "10":
+                cómputo=100
+                    bCony=0
+                    bHijos=10
+                    break;
+
+            default:
+                break;
+        
+        }
+    } else if (cony=="1") {
+        switch (hijos) {
+            case "0":
+                cómputo=70
+                bCony=100
+                bHijos=0
+                break;
+            case "1":
+                cómputo=70
+                bCony=71.43
+                bHijos=28.57
+                break;
+            case "2":
+                cómputo=90
+                bCony=55.56
+                bHijos=22.22
+                break;
+            case "3":
+                cómputo=100
+                bCony=45.46
+                bHijos=18.18
+                break;
+            case "4":
+                cómputo=100
+                bCony=38.48
+                bHijos=15.38
+                break;
+            case "5":
+            cómputo=100
+                bCony=33.35
+                bHijos=13.33
+                break;
+            case "6":
+            cómputo=100
+                bCony=29.44
+                bHijos=11.76
+                break;
+            case "7":
+                cómputo=100
+                    bCony=26.29
+                    bHijos=10.53
+                    break;
+            case "8":
+                cómputo=100
+                    bCony=23.84
+                    bHijos=9.52
+                    break;
+            case "9":
+                cómputo=100
+                    bCony=21.70
+                    bHijos=8.70
+                    break;
+            case "10":
+                cómputo=100
+                    bCony=20
+                    bHijos=8
+                    break;
+
+            default:
+                break;
+        
+        }
+
+    }    
+    else if (cony=="2") {
+        switch (hijos) {
+            case "0":
+                cómputo=70
+                bCony=50
+                bHijos=0
+                break;
+            case "1":
+                cómputo=70
+                bCony=35.71
+                bHijos=28.57
+                break;
+            case "2":
+                cómputo=90
+                bCony=27.78
+                bHijos=22.22
+                break;
+            case "3":
+                cómputo=100
+                bCony=22.73
+                bHijos=18.18
+                break;
+            case "4":
+                cómputo=100
+                bCony=19.24
+                bHijos=15.38
+                break;
+            case "5":
+            cómputo=100
+                bCony=16.68
+                bHijos=13.33
+                break;
+            case "6":
+            cómputo=100
+                bCony=29.44
+                bHijos=14.72
+                break;
+            case "7":
+                cómputo=100
+                    bCony=13.15
+                    bHijos=10.53
+                    break;
+            case "8":
+                cómputo=100
+                    bCony=11.92
+                    bHijos=9.52
+                    break;
+            case "9":
+                cómputo=100
+                    bCony=10.85
+                    bHijos=8.70
+                    break;
+            case "10":
+                cómputo=100
+                    bCony=10
+                    bHijos=8
+                    break;
+
+            default:
+                break;
+        
+        }
+    }
+    
+    document.getElementById("resPorcComp").value=cómputo+"%"
+    document.getElementById("resCónyuges").value=bCony+"%"
+    document.getElementById("resHijos").value=bHijos+"%"
+    console.log(cony)
+    console.log(hijos)
+}
+
 //CÁLCULOS DE RH----------------------------------------
 function badaroPuro(haber) {
 	var h=haber
