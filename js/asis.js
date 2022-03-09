@@ -38,7 +38,7 @@ let counter = 0
 function verInfoBasica(mes, año) {
     var periodo = año + mes + "01";
     var nro = nPer.indexOf(periodo);
-    
+
     // mínima  
     var min = haberMin[nro];
     document.getElementById('minima').textContent = min
@@ -100,10 +100,10 @@ function pami(mes, año, monto) {
     var haberMinimo = parseFloat(minima.replace(",", "."))
     var resPami = haberMinimo * 0.03 + (monto - haberMinimo) * 0.06
 
- if (monto < haberMinimo) {
+    if (monto < haberMinimo) {
         window.alert("El importe ingresado es menor a la mínima de Ley para el período seleccionado. El resultado será el 3% de la mínima (" + haberMinimo + ")")
-	resPami=monto*0.03
-    } 
+        resPami = monto * 0.03
+    }
 
     document.getElementById('resultOs').value = resPami.toFixed(2)
 
@@ -540,7 +540,7 @@ function deFebAMar(pbu, pc, pap) {
         f = f + 1
 
     } while (f < 6);
-//SOLO PBU
+    //SOLO PBU
     if (pc == 0) {
         if (pap == 0) {
 
@@ -548,56 +548,56 @@ function deFebAMar(pbu, pc, pap) {
             pbu = pbu * coeficienteMovilidad[nroPeríodo]
             supl = 0
 
-//PBU Y PAP
+            //PBU Y PAP
         } else {
             console.log("PBU y PAP")
-            if (pbu >= 8144*porcent) {
+            if (pbu >= 8144 * porcent) {
                 pap = pap + supl
                 pbu = pbu * coeficienteMovilidad[nroPeríodo]
                 pap = pap * coeficienteMovilidad[nroPeríodo]
                 supl = 0
 
             } else {
-                suplEntero=1796.35
-                cpbu=(pbu/8144.14).toFixed(2)
-                difPbu=563.64
-                difPcPap=1233.10*porcent
-                aRepartir=suplEntero*porcent-difPbu*cpbu
-                pbu=pbu+(difPbu*cpbu)
-                pap=pap+aRepartir
+                suplEntero = 1796.35
+                cpbu = (pbu / 8144.14).toFixed(2)
+                difPbu = 563.64
+                difPcPap = 1233.10 * porcent
+                aRepartir = suplEntero * porcent - difPbu * cpbu
+                pbu = pbu + (difPbu * cpbu)
+                pap = pap + aRepartir
                 pbu = pbu * coeficienteMovilidad[nroPeríodo]
                 pap = pap * coeficienteMovilidad[nroPeríodo]
                 supl = 0
             }
         }
-//PBU Y PC
+        //PBU Y PC
     } else {
         if (pap == 0) {
             console.log("PBU y PC")
-            if (pbu >= 8144*porcent) {
+            if (pbu >= 8144 * porcent) {
                 pc = pc + supl
                 pbu = pbu * coeficienteMovilidad[nroPeríodo]
                 pc = pc * coeficienteMovilidad[nroPeríodo]
                 supl = 0
 
             } else {
-                suplEntero=1796.35
-                cpbu=(pbu/8144.14).toFixed(2)
-                difPbu=563.64
-                difPcPap=1233.10*porcent
-                aRepartir=suplEntero*porcent-difPbu*cpbu
-                pbu=pbu+(difPbu*cpbu)
-                pc=pc+aRepartir
+                suplEntero = 1796.35
+                cpbu = (pbu / 8144.14).toFixed(2)
+                difPbu = 563.64
+                difPcPap = 1233.10 * porcent
+                aRepartir = suplEntero * porcent - difPbu * cpbu
+                pbu = pbu + (difPbu * cpbu)
+                pc = pc + aRepartir
                 pbu = pbu * coeficienteMovilidad[nroPeríodo]
                 pc = pc * coeficienteMovilidad[nroPeríodo]
                 supl = 0
             }
-//PBU-PC-PAP
+            //PBU-PC-PAP
         } else {
             var pcPap = pc + pap
             var partPc = pc / pcPap
             var partPap = pap / pcPap
-            if (pbu >= 8144*porcent) {
+            if (pbu >= 8144 * porcent) {
                 pc = pc + supl * partPc
                 pap = pap + supl * partPap
                 supl = 0
@@ -605,14 +605,14 @@ function deFebAMar(pbu, pc, pap) {
                 pc = pc * coeficienteMovilidad[nroPeríodo]
                 pap = pap * coeficienteMovilidad[nroPeríodo]
             } else {
-                suplEntero=1796.35
-                cpbu=(pbu/8144.14).toFixed(2)
-                difPbu=563.64
-                difPcPap=1233.10*porcent
-                aRepartir=suplEntero*porcent-difPbu*cpbu
-                pbu=pbu+(difPbu*cpbu)
-                pc=pc+aRepartir*partPc
-                pap=pap+aRepartir*partPap
+                suplEntero = 1796.35
+                cpbu = (pbu / 8144.14).toFixed(2)
+                difPbu = 563.64
+                difPcPap = 1233.10 * porcent
+                aRepartir = suplEntero * porcent - difPbu * cpbu
+                pbu = pbu + (difPbu * cpbu)
+                pc = pc + aRepartir * partPc
+                pap = pap + aRepartir * partPap
 
                 pbu = pbu * coeficienteMovilidad[nroPeríodo]
                 pc = pc * coeficienteMovilidad[nroPeríodo]
@@ -622,7 +622,7 @@ function deFebAMar(pbu, pc, pap) {
 
         }
     }
-//ESCRIBO RESULTADOS MZO Y ABRIL
+    //ESCRIBO RESULTADOS MZO Y ABRIL
     document.getElementById("tablaMov2020").rows[f].cells[1].textContent = pbu.toFixed(2)
     document.getElementById("tablaMov2020").rows[f].cells[2].textContent = pc.toFixed(2)
     document.getElementById("tablaMov2020").rows[f].cells[3].textContent = pap.toFixed(2)
@@ -638,209 +638,228 @@ function deFebAMar(pbu, pc, pap) {
 function pensiones(cony, hijos) {
     cony = document.getElementById("cónyuges").value
     hijos = document.getElementById("hijos").value
-    var cómputo=0
-    var bCony=0
-    var bHijos=0
+    var cómputo = 0
+    var bCony = 0
+    var bHijos = 0
     console.log(cony)
 
-    if (cony=="0") {
+    if (cony == "0") {
         switch (hijos) {
             case "1":
-                cómputo=70
-                bCony=0
-                bHijos=100
+                cómputo = 70
+                bCony = 0
+                bHijos = 100
                 break;
             case "2":
-                cómputo=90
-                bCony=0
-                bHijos=50
+                cómputo = 90
+                bCony = 0
+                bHijos = 50
                 break;
             case "3":
-                cómputo=100
-                bCony=0
-                bHijos=33.33
+                cómputo = 100
+                bCony = 0
+                bHijos = 33.33
                 break;
             case "4":
-                cómputo=100
-                bCony=0
-                bHijos=25
+                cómputo = 100
+                bCony = 0
+                bHijos = 25
                 break;
             case "5":
-            cómputo=100
-                bCony=0
-                bHijos=20
+                cómputo = 100
+                bCony = 0
+                bHijos = 20
                 break;
             case "6":
-            cómputo=100
-                bCony=0
-                bHijos=16.67
+                cómputo = 100
+                bCony = 0
+                bHijos = 16.67
                 break;
             case "7":
-                cómputo=100
-                    bCony=0
-                    bHijos=14.29
-                    break;
+                cómputo = 100
+                bCony = 0
+                bHijos = 14.29
+                break;
             case "8":
-                cómputo=100
-                    bCony=0
-                    bHijos=12.50
-                    break;
+                cómputo = 100
+                bCony = 0
+                bHijos = 12.50
+                break;
             case "9":
-                cómputo=100
-                    bCony=0
-                    bHijos=11.11
-                    break;
+                cómputo = 100
+                bCony = 0
+                bHijos = 11.11
+                break;
             case "10":
-                cómputo=100
-                    bCony=0
-                    bHijos=10
-                    break;
+                cómputo = 100
+                bCony = 0
+                bHijos = 10
+                break;
 
             default:
                 break;
-        
+
         }
-    } else if (cony=="1") {
+    } else if (cony == "1") {
         switch (hijos) {
             case "0":
-                cómputo=70
-                bCony=100
-                bHijos=0
+                cómputo = 70
+                bCony = 100
+                bHijos = 0
                 break;
             case "1":
-                cómputo=70
-                bCony=71.43
-                bHijos=28.57
+                cómputo = 70
+                bCony = 71.43
+                bHijos = 28.57
                 break;
             case "2":
-                cómputo=90
-                bCony=55.56
-                bHijos=22.22
+                cómputo = 90
+                bCony = 55.56
+                bHijos = 22.22
                 break;
             case "3":
-                cómputo=100
-                bCony=45.46
-                bHijos=18.18
+                cómputo = 100
+                bCony = 45.46
+                bHijos = 18.18
                 break;
             case "4":
-                cómputo=100
-                bCony=38.48
-                bHijos=15.38
+                cómputo = 100
+                bCony = 38.48
+                bHijos = 15.38
                 break;
             case "5":
-            cómputo=100
-                bCony=33.35
-                bHijos=13.33
+                cómputo = 100
+                bCony = 33.35
+                bHijos = 13.33
                 break;
             case "6":
-            cómputo=100
-                bCony=29.44
-                bHijos=11.76
+                cómputo = 100
+                bCony = 29.44
+                bHijos = 11.76
                 break;
             case "7":
-                cómputo=100
-                    bCony=26.29
-                    bHijos=10.53
-                    break;
+                cómputo = 100
+                bCony = 26.29
+                bHijos = 10.53
+                break;
             case "8":
-                cómputo=100
-                    bCony=23.84
-                    bHijos=9.52
-                    break;
+                cómputo = 100
+                bCony = 23.84
+                bHijos = 9.52
+                break;
             case "9":
-                cómputo=100
-                    bCony=21.70
-                    bHijos=8.70
-                    break;
+                cómputo = 100
+                bCony = 21.70
+                bHijos = 8.70
+                break;
             case "10":
-                cómputo=100
-                    bCony=20
-                    bHijos=8
-                    break;
+                cómputo = 100
+                bCony = 20
+                bHijos = 8
+                break;
 
             default:
                 break;
-        
+
         }
 
-    }    
-    else if (cony=="2") {
+    }
+    else if (cony == "2") {
         switch (hijos) {
             case "0":
-                cómputo=70
-                bCony=50
-                bHijos=0
+                cómputo = 70
+                bCony = 50
+                bHijos = 0
                 break;
             case "1":
-                cómputo=70
-                bCony=35.71
-                bHijos=28.57
+                cómputo = 70
+                bCony = 35.71
+                bHijos = 28.57
                 break;
             case "2":
-                cómputo=90
-                bCony=27.78
-                bHijos=22.22
+                cómputo = 90
+                bCony = 27.78
+                bHijos = 22.22
                 break;
             case "3":
-                cómputo=100
-                bCony=22.73
-                bHijos=18.18
+                cómputo = 100
+                bCony = 22.73
+                bHijos = 18.18
                 break;
             case "4":
-                cómputo=100
-                bCony=19.24
-                bHijos=15.38
+                cómputo = 100
+                bCony = 19.24
+                bHijos = 15.38
                 break;
             case "5":
-            cómputo=100
-                bCony=16.68
-                bHijos=13.33
+                cómputo = 100
+                bCony = 16.68
+                bHijos = 13.33
                 break;
             case "6":
-            cómputo=100
-                bCony=29.44
-                bHijos=14.72
+                cómputo = 100
+                bCony = 29.44
+                bHijos = 14.72
                 break;
             case "7":
-                cómputo=100
-                    bCony=13.15
-                    bHijos=10.53
-                    break;
+                cómputo = 100
+                bCony = 13.15
+                bHijos = 10.53
+                break;
             case "8":
-                cómputo=100
-                    bCony=11.92
-                    bHijos=9.52
-                    break;
+                cómputo = 100
+                bCony = 11.92
+                bHijos = 9.52
+                break;
             case "9":
-                cómputo=100
-                    bCony=10.85
-                    bHijos=8.70
-                    break;
+                cómputo = 100
+                bCony = 10.85
+                bHijos = 8.70
+                break;
             case "10":
-                cómputo=100
-                    bCony=10
-                    bHijos=8
-                    break;
+                cómputo = 100
+                bCony = 10
+                bHijos = 8
+                break;
 
             default:
                 break;
-        
+
         }
     }
-    
-    document.getElementById("resPorcComp").value=cómputo+"%"
-    document.getElementById("resCónyuges").value=bCony+"%"
-    document.getElementById("resHijos").value=bHijos+"%"
+
+    document.getElementById("resPorcComp").value = cómputo + "%"
+    document.getElementById("resCónyuges").value = bCony + "%"
+    document.getElementById("resHijos").value = bHijos + "%"
     console.log(cony)
     console.log(hijos)
 }
 
 //CÁLCULOS DE RH----------------------------------------
-function badaroPuro(haber) {
-	var h=haber
-	var porc=document.getElementById("porcBenef").value
-resultado=h*porc*19.908886958248
+let actJubi = ['1,6542', '1,6459', '1,6357', '1,6025', '1,5992', '1,6158', '1,5821', '1,583', '1,5863', '1,5868', '1,5902', '1,6088', '1,5996', '1,6059', '1,6141', '1,6234', '1,6351', '1,653', '1,669', '1,6917', '1,7221', '1,7427', '1,7496', '1,7628', '1,7587', '1,7441', '1,7398', '1,7401', '1,7269', '1,7254', '1,7114', '1,7032', '1,6964', '1,6905', '1,6868', '1,6862', '1,6922', '1,6997', '1,6941', '1,6844', '1,6712', '1,6423', '1,5873', '1,5866', '1,5945', '1,5968', '1,6088', '1,6011', '1,6154', '1,6141', '1,6266', '1,6184', '1,6057', '1,5749', '1,5152', '1,5096', '1,5091', '1,4989', '1,5007', '1,5354', '1,5232', '1,4769', '1,4598', '1,4632', '1,4392', '1,3674', '1,2997', '1,265', '1,2207', '1,1993', '1,1838', '1,1735', '1,1595', '1,1478', '1,1382', '1,1291', '1,1213', '1,1139', '1,1069', '1,1008', '1,0946', '1,0867', '1,0807', '1,0763', '1,0704', '1,0657', '1,0613', '1,0571', '1,0531', '1,0491', '1,0454', '1,0431', '1,0391', '1,0364', '1,0339', '1,0311', '1,0385', '1,0281', '1,0281', '1,0302', '1,0258', '1,027', '1,0191', '1,02', '1,0192', '1,0172', '1,0152', '1,0216', '1,0304', '1,0488', '1,0819', '1,1212', '1,1327', '1,1537', '1,1788', '1,2055', '1,216', '1,21', '1,1964', '1,2074', '1,1914', '1,1865', '1,1833', '1,1867', '1,1871', '1,1987', '1,1962', '1,1954', '1,2061', '1,2503', '1,2638', '1,2895', '1,3247', '1,3718', '1,397', '1,4451', '1,4555', '1,4569', '1,4707', '1,4874', '1,5189', '1,5389', '1,5731', '1,5945', '1,6174', '1,6414', '1,6492', '1,6823', '1,6838', '1,7091', '1,7239', '1,752', '1,7812', '1,8247', '1,8311', '1,8304', '1,8806', '1,9158', '1,9111', '1,9724', '1,9635', '1,9746', '1,9718', '2,0387', '2,0841', '2,2101', '1,3519', '1,3578', '1,3545', '1,351', '1,3474', '1,3439', '1,3405', '1,3371', '1,334', '1,3307', '1,3274', '1,3243', '1,321', '1,3177', '1,3145', '1,3112', '1,3079', '1,3045', '1,3012', '1,2978', '1,2944', '1,291', '1,2874', '1,284', '1,2802', '1,2766', '1,2733', '1,2696', '1,2658', '1,2622', '1,2585', '1,2547', '1,251', '1,2473', '1,2436', '1,24', '1,2363', '1,2324', '1,2286', '1,2246', '1,2204', '1,2163', '1,2122', '1,2079', '1,2034', '1,199', '1,1947', '1,1904', '1,1859', '1,1814', '1,1766', '1,1724', '1,1677', '1,1631', '1,1586', '1,1538', '1,1491', '1,1439', '1,1387', '1,1335', '1,1282', '1,1227', '1,1174', '1,1124', '1,1077', '1,1036', '1,1001', '1,0968', '1,0937', '1,091', '1,0888', '1,0866', '1,0844', '1,0819', '1,0795', '1,0769', '1,0741', '1,0713', '1,0682', '1,0649', '1,0615', '1,0578', '1,0538', '1,0497', '1,0461', '1,0425', '1,039', '1,0358', '1,0331', '1,0306', '1,0285', '1,0264', '1,024', '1,0216', '1,0193', '1,0171', '1,015', '1,0131', '1,0113', '1,0096']
 
-document.getElementById("res082016").value=resultado.toFixed(2)
+let actRTI = ['1,5154', '1,5105', '1,5363', '1,5752', '1,5866', '1,5541', '1,4951', '1,4626', '1,3973', '1,3662', '1,3429', '1,334', '1,3047', '1,2851', '1,2687', '1,253', '1,2395', '1,2301', '1,2156', '1,2004', '1,1884', '1,1737', '1,1628', '1,1587', '1,1425', '1,1347', '1,1287', '1,1211', '1,1069', '1,1055', '1,0917', '1,0846', '1,0776', '1,0719', '1,0669', '1,0648', '1,0577', '1,0537', '1,0502', '1,047', '1,0432', '1,0413', '1,0378', '1,0348', '1,0324', '1,0294', '1,0269', '1,0283', '1,0224', '1,0203', '1,0184', '1,0165', '1,0147', '1,0146', '1,0116', '1,0107', '1,0092', '1,0073', '1,006', '1,006', '1,0035', '1,0022', '1,0015', '1,0011', '1,0006', '1,0009', '1,0003', '1,0013', '1,0004', '1', '1,0001', '1,006', '1,0003', '1,0003', '1,0003', '1,0002', '1,0001', '1,0008', '1,0014', '1,003', '1,003', '1,0008', '1,0004', '1,002', '1,0003', '1,0002', '1,0001', '1,0003', '1,0001', '1', '1,0002', '1,0027', '1,0011', '1,0011', '1,0011', '1,0001', '1,0192', '1,0024', '1,0063', '1,0139', '1,0085', '1,0139', '1,0012', '1,0056', '1,0067', '1,0051', '1,0034', '1,0183', '1,0353', '1,0601', '1,0936', '1,1332', '1,1443', '1,1647', '1,1893', '1,2149', '1,224', '1,2165', '1,2013', '1,2103', '1,1931', '1,1866', '1,1814', '1,1825', '1,1807', '1,1897', '1,1849', '1,1814', '1,1896', '1,2305', '1,2405', '1,2624', '1,2934', '1,3356', '1,3557', '1,3978', '1,4026', '1,3986', '1,4062', '1,4166', '1,4408', '1,4538', '1,4796', '1,4928', '1,507', '1,5216', '1,5208', '1,5428', '1,5355', '1,5498', '1,5537', '1,5694', '1,5861', '1,6147', '1,61', '1,5987', '1,631', '1,651', '1,6353', '1,6758', '1,6561', '1,6531', '1,6382', '1,6798', '1,7029', '1,7902', '1,1819', '1,1806', '1,1715', '1,163', '1,1551', '1,1482', '1,1424', '1,1369', '1,132', '1,1278', '1,1242', '1,1209', '1,1175', '1,1137', '1,1102', '1,1062', '1,1024', '1,0983', '1,0938', '1,0891', '1,0842', '1,0789', '1,0729', '1,0672', '1,0621', '1,0571', '1,0522', '1,0478', '1,0441', '1,0406', '1,0377', '1,0348', '1,0316', '1,0284', '1,0252', '1,0223', '1,0196', '1,0171', '1,0147', '1,0125', '1,0104', '1,0082', '1,0063', '1,0041', '1,0022', '1,0002', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1']
+
+let perActRh = ['199407', '199408', '199409', '199410', '199411', '199412', '199501', '199502', '199503', '199504', '199505', '199506', '199507', '199508', '199509', '199510', '199511', '199512', '199601', '199602', '199603', '199604', '199605', '199606', '199607', '199608', '199609', '199610', '199611', '199612', '199701', '199702', '199703', '199704', '199705', '199706', '199707', '199708', '199709', '199710', '199711', '199712', '199801', '199802', '199803', '199804', '199805', '199806', '199807', '199808', '199809', '199810', '199811', '199812', '199901', '199902', '199903', '199904', '199905', '199906', '199907', '199908', '199909', '199910', '199911', '199912', '200001', '200002', '200003', '200004', '200005', '200006', '200007', '200008', '200009', '200010', '200011', '200012', '200101', '200102', '200103', '200104', '200105', '200106', '200107', '200108', '200109', '200110', '200111', '200112', '200201', '200202', '200203', '200204', '200205', '200206', '200207', '200208', '200209', '200210', '200211', '200212', '200301', '200302', '200303', '200304', '200305', '200306', '200307', '200308', '200309', '200310', '200311', '200312', '200401', '200402', '200403', '200404', '200405', '200406', '200407', '200408', '200409', '200410', '200411', '200412', '200501', '200502', '200503', '200504', '200505', '200506', '200507', '200508', '200509', '200510', '200511', '200512', '200601', '200602', '200603', '200604', '200605', '200606', '200607', '200608', '200609', '200610', '200611', '200612', '200701', '200702', '200703', '200704', '200705', '200706', '200707', '200708', '200709', '200710', '200711', '200712', '200801', '200802', '200803', '200804', '200805', '200806', '200807', '200808', '200809', '200810', '200811', '200812', '200901', '200902', '200903', '200904', '200905', '200906', '200907', '200908', '200909', '200910', '200911', '200912', '201001', '201002', '201003', '201004', '201005', '201006', '201007', '201008', '201009', '201010', '201011', '201012', '201101', '201102', '201103', '201104', '201105', '201106', '201107', '201108', '201109', '201110', '201111', '201112', '201201', '201202', '201203', '201204', '201205', '201206', '201207', '201208', '201209', '201210', '201211', '201212', '201301', '201302', '201303', '201304', '201305', '201306', '201307', '201308', '201309', '201310', '201311', '201312', '201401', '201402', '201403', '201404', '201405', '201406', '201407', '201408', '201409', '201410', '201411', '201412', '201501', '201502', '201503', '201504', '201505', '201506', '201507', '201508', '201509', '201510', '201511', '201512', '201601', '201602', '201603', '201604', '201605', '201606', '201607', '201608']
+
+
+function badaroPuro(haber) {
+    var h = haber
+    var porc = document.getElementById("porcBenef").value
+    var porc2 = document.getElementById("porcBenef2").value
+    resultado = h * porc * porc2 * 19.908886958248
+
+    document.getElementById("res082016").value = resultado.toFixed(2)
+
+}
+
+function actualizarPrestación(fad, pComp, pBen, pbu, pc, pap) {
+
+    fad = document.getElementById("FAD").value
+    var nroA = perActRh.indexOf(fad)
+
+    document.getElementById("coef").value = actJubi[nroA];
+
+    console.log(Number(actJubi[nroA].replace(",", ".")) + 1);
 
 }
