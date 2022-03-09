@@ -88,6 +88,7 @@ function Calcular(mes, año, mHasta, aHasta, monto) {
         while (nro > nFin - 1);
     }
     document.getElementById('result').value = importe.toFixed(2);
+    return importe.toFixed(2)
 }
 
 function pami(mes, año, monto) {
@@ -842,6 +843,7 @@ let actRTI = ['1,5154', '1,5105', '1,5363', '1,5752', '1,5866', '1,5541', '1,495
 
 let perActRh = ['199407', '199408', '199409', '199410', '199411', '199412', '199501', '199502', '199503', '199504', '199505', '199506', '199507', '199508', '199509', '199510', '199511', '199512', '199601', '199602', '199603', '199604', '199605', '199606', '199607', '199608', '199609', '199610', '199611', '199612', '199701', '199702', '199703', '199704', '199705', '199706', '199707', '199708', '199709', '199710', '199711', '199712', '199801', '199802', '199803', '199804', '199805', '199806', '199807', '199808', '199809', '199810', '199811', '199812', '199901', '199902', '199903', '199904', '199905', '199906', '199907', '199908', '199909', '199910', '199911', '199912', '200001', '200002', '200003', '200004', '200005', '200006', '200007', '200008', '200009', '200010', '200011', '200012', '200101', '200102', '200103', '200104', '200105', '200106', '200107', '200108', '200109', '200110', '200111', '200112', '200201', '200202', '200203', '200204', '200205', '200206', '200207', '200208', '200209', '200210', '200211', '200212', '200301', '200302', '200303', '200304', '200305', '200306', '200307', '200308', '200309', '200310', '200311', '200312', '200401', '200402', '200403', '200404', '200405', '200406', '200407', '200408', '200409', '200410', '200411', '200412', '200501', '200502', '200503', '200504', '200505', '200506', '200507', '200508', '200509', '200510', '200511', '200512', '200601', '200602', '200603', '200604', '200605', '200606', '200607', '200608', '200609', '200610', '200611', '200612', '200701', '200702', '200703', '200704', '200705', '200706', '200707', '200708', '200709', '200710', '200711', '200712', '200801', '200802', '200803', '200804', '200805', '200806', '200807', '200808', '200809', '200810', '200811', '200812', '200901', '200902', '200903', '200904', '200905', '200906', '200907', '200908', '200909', '200910', '200911', '200912', '201001', '201002', '201003', '201004', '201005', '201006', '201007', '201008', '201009', '201010', '201011', '201012', '201101', '201102', '201103', '201104', '201105', '201106', '201107', '201108', '201109', '201110', '201111', '201112', '201201', '201202', '201203', '201204', '201205', '201206', '201207', '201208', '201209', '201210', '201211', '201212', '201301', '201302', '201303', '201304', '201305', '201306', '201307', '201308', '201309', '201310', '201311', '201312', '201401', '201402', '201403', '201404', '201405', '201406', '201407', '201408', '201409', '201410', '201411', '201412', '201501', '201502', '201503', '201504', '201505', '201506', '201507', '201508', '201509', '201510', '201511', '201512', '201601', '201602', '201603', '201604', '201605', '201606', '201607', '201608']
 
+let coefBadaro = [' 99.738563836197', ' 99.6447069467365', ' 99.57493056029', ' 99.521652071896', ' 99.5582464263307', ' 99.6736686327938', ' 105.896282880488', ' 106.49035339555', ' 106.679334780159', ' 106.718544447437', ' 107.279260512083', ' 107.588871899924', ' 111.073634083029', ' 111.411709326321', ' 111.507635837392', ' 111.92818555192', ' 115.211648390973', ' 115.845958282536', ' 116.547957147038', ' 117.477747237203', ' 118.459051264828', ' 119.421717684007', ' 119.838573719716', ' 120.575678417608', ' 123.722026928731', ' 125.83525878065', ' 126.951354550322', ' 127.544336686724', ' 127.915813239789', ' 128.132343520861', ' 128.963212991528', ' 130.095255961679', ' 130.518752408864', ' 130.673297172261', ' 131.200322760844', ' 131.815230670843', ' 136.650986170692', ' 139.459156307887', ' 140.391959899524', ' 142.211253416816', ' 144.388233018647', ' 145.656157110774', ' 148.044542502433', ' 150.30304036426', ' 153.101495194978', ' 155.251467586506', ' 156.773837988318', ' 158.593441898788', ' 161.265876097912', ' 162.795189294231', ' 164.186831100824', ' 166.852066180752', ' 169.40747414157', ' 171.48433171783', ' 174.734766275789', ' 177.346560661856', ' 180.828214908106', ' 184.094264045209', ' 186.627907436629', ' 188.558998569077', ' 191.005811972083']
 
 function badaroPuro(haber) {
     var h = haber
@@ -857,9 +859,100 @@ function actualizarPrestación(fad, pComp, pBen, pbu, pc, pap) {
 
     fad = document.getElementById("FAD").value
     var nroA = perActRh.indexOf(fad)
+    if (document.getElementById("prestación").value == "Jubi") {
+        document.getElementById("coef").value = actJubi[nroA];
 
-    document.getElementById("coef").value = actJubi[nroA];
+    } else {
+        document.getElementById("coef").value = actRTI[nroA];
+
+    }
 
     console.log(Number(actJubi[nroA].replace(",", ".")) + 1);
+
+}
+
+function nvoHaberFad(pbu, pc, pap, pComp, pBen, coeficiente) {
+    pbu = document.getElementById("pbu").value
+    pc = document.getElementById("pc").value
+    pap = document.getElementById("pap").value
+    pComp = Number(document.getElementById("porcBenef3").value)
+    pBen = Number(document.getElementById("porcBenef4").value)
+    coeficiente = Number(document.getElementById("coef").value.replace(",", "."))
+    h2007=0
+
+    document.getElementById("npbu").value = pbu * pComp
+    document.getElementById("npc").value = (pc * pComp * pBen * coeficiente).toFixed(2)
+    if (perActRh.indexOf(document.getElementById("FAD").value) > 155) {
+        document.getElementById("npap").value = (pap * pComp * pBen * coeficiente).toFixed(2)
+
+    } else {
+        document.getElementById("npap").value = (pap / 0.85 * 1.5 * pComp * pBen * coeficiente).toFixed(2)
+    }
+    document.getElementById("nHFad").value = (Number(document.getElementById("npbu").value) + Number(document.getElementById("npc").value) + Number(document.getElementById("npap").value)).toFixed(2)
+
+    h2007=badaroProporcional(document.getElementById("nHFad").value,document.getElementById("FAD").value)
+    console.log(document.getElementById("FAD").value)
+
+    document.getElementById("r082016").value=Calcular('12','2006','08','2016',h2007)
+    console.log(pComp)
+    console.log(pBen)
+}
+
+function badaroProporcional(haber, período) {
+    resBadaro = 0
+    nCoefBadaro = 0
+    nCoefBadaro = perActRh.indexOf(período) - 90
+    if (perActRh.indexOf(período) < 78) {
+        resBadaro = haber * 1.885589771
+    } else {
+        switch (período.slice(0, 4)) {
+            case '2002':
+                resBadaro = haber * (111.0736341 / Number(coefBadaro[nCoefBadaro])) * 1.752588136
+                break;
+            case '2003':
+                if (período.slice(4, 6) == "01") {
+                    resBadaro = haber * 1.752588136
+                } else {
+                    resBadaro = haber * (123.7220269 / Number(coefBadaro[nCoefBadaro])) * 1.563822695
+                }
+                break;
+            case '2004':
+                if (período.slice(4, 6) == "01") {
+                    resBadaro = haber * 1.563822695
+                } else {
+                    resBadaro = haber * (136.6509862 / Number(coefBadaro[nCoefBadaro])) * 1.430479543
+                }
+                break;
+            case '2005':
+                if (período.slice(4, 6) == "01") {
+                    resBadaro = haber * 1.430479543
+                } else {
+                    resBadaro = haber * (161.2658761 / Number(coefBadaro[nCoefBadaro])) * 1.1889457
+                }
+                break;
+            case '2006':
+                if (período.slice(4, 6) == "01") {
+                    resBadaro = haber * 1.1889457
+                } else {
+                    resBadaro = haber * (191.005812 / Number(coefBadaro[nCoefBadaro]))
+                }
+
+                break;
+            default:
+                break;
+        }
+    }
+    return resBadaro
+
+}
+
+function final630(mhasta,ahasta,monto,monto2) {
+    mhasta=document.getElementById("Omes").value
+    ahasta=document.getElementById("Oaño").value
+    monto=document.getElementById("r082016").value
+    monto2=document.getElementById("perc082016").value
+
+    document.getElementById("rRH").value=Calcular('08','2016',mhasta,ahasta,monto)
+    document.getElementById("rSRH").value=Calcular('08','2016',mhasta,ahasta,monto2)
 
 }

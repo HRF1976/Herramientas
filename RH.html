@@ -170,7 +170,7 @@
         <div class="col-12">
             <div class="col-2 row" style="padding: 5px;">
                 <h4>FAD (mm-aaaa)</h4>
-                <select class="col-8" id="FAD">
+                <select class="col-8" id="FAD" onchange="actualizarPrestación()">
                     <option value=199407>07-1994</option>
                     <option value=199408>08-1994</option>
                     <option value=199409>09-1994</option>
@@ -443,7 +443,7 @@
 
             <div class="col-2 row" style="padding: 5px">
                 <h4>% de Cómputo</h4>
-                <select class="col-8" id="porcBenef" style="text-align-last: right;">
+                <select class="col-8" id="porcBenef3" style="text-align-last: right;">
                     <option value=1>100</option>
                     <option value=0.90>90</option>
                     <option value=0.70>70</option>
@@ -452,7 +452,7 @@
             </div>
             <div class="col-2 row" style="padding: 5px">
                 <h4>% del Beneficio</h4>
-                <select class="col-8" id="porcBenef2" style="text-align-last: right;">
+                <select class="col-8" id="porcBenef4" style="text-align-last: right;">
                     <option value=1>100</option>
                     <option value=0.7143>71,43</option>
                     <option value=0.5556>55,56</option>
@@ -497,14 +497,15 @@
             </div>
             <div class="col-2 row" style="padding: 5px">
                 <h4>Prestación</h4>
-                <select class="col-12" id="prestación" style="text-align-last: right;">
+                <select class="col-12" id="prestación" style="text-align-last: right;"
+                    onchange="actualizarPrestación()">
                     <option value="Jubi">Jubilación/Pensión</option>
                     <option value="RTI">RTI</option>
                 </select>
             </div>
 
             <div class="col-12" style="padding: 5px;">
-<hr>
+                <hr>
                 <div class="col-1 row" style="padding: 5px;">
                     <div class="col-12">
                         <h4>PBU</H4>
@@ -518,8 +519,8 @@
                 <div class="col-1 row" style="padding: 5px;">
                     <div class="col-12">
                         <h4>Coeficiente</H4>
-                        <input id="coef" type="text">
-                        <button id="nvaPCPAP" style="margin-top:30px;" onclick="actualizarPrestación()">Aplicar</button>
+                        <input id="coef" type="text" readonly>
+                        <button id="nvaPCPAP" style="margin-top:30px;" onclick="nvoHaberFad()">Aplicar</button>
                     </div>
                 </div>
 
@@ -534,8 +535,89 @@
                     </div>
                 </div>
 
-            </div>
+                <div class="col-1 row" style="padding: 5px;">
+                    <div class="col-12">
+                        <h4>Nuevo Haber FAD</H4>
+                        <input id="nHFad" type="number" readonly>
 
+                    </div>
+                </div>
+
+                <div class="col-1 row" style="padding: 5px;">
+                </div>
+            </div>
+            <hr>
+            <div class="col-12" style="padding: 5px;">
+                <hr>
+                <div class="col-1 row" style="padding: 5px;">
+                    <div class="col-12">
+                        <h4>Resultado 08/2016</H4>
+                        <input id="r082016" type="number" readonly>
+
+                    </div>
+
+                    <div class="col-12">
+                        <h4>Percibido 8/2016</H4>
+                        <input id="perc082016" type="number">
+                    </div>
+                </div>
+                <div class="col-3 row" style="padding: 5px;">
+                    <div class="col-12">
+                        <h4>Resultado a otra fecha</H4>
+                        <select class="col-6" name="mes" id="Omes">
+                            <option value='01'>Enero</option>
+                            <option value='02'>Febrero</option>
+                            <option value='03'>Marzo</option>
+                            <option value='04'>Abril</option>
+                            <option value='05'>Mayo</option>
+                            <option value='06'>Junio</option>
+                            <option value='07'>Julio</option>
+                            <option value='08'>Agosto</option>
+                            <option value='09'>Septiembre</option>
+                            <option value='10'>Octubre</option>
+                            <option value='11'>Noviembre</option>
+                            <option value='12'>Diciembre</option>
+                        </select>
+                        <select name="año" class="col-6" id="Oaño">
+                            <option value='2004'>2004</option>
+                            <option value='2005'>2005</option>
+                            <option value='2006'>2006</option>
+                            <option value='2007'>2007</option>
+                            <option value='2008'>2008</option>
+                            <option value='2009'>2009</option>
+                            <option value='2010'>2010</option>
+                            <option value='2011'>2011</option>
+                            <option value='2012'>2012</option>
+                            <option value='2013'>2013</option>
+                            <option value='2014'>2014</option>
+                            <option value='2015'>2015</option>
+                            <option value='2016'>2016</option>
+                            <option value='2017'>2017</option>
+                            <option value='2018'>2018</option>
+                            <option value='2019'>2019</option>
+                            <option value='2020'>2020</option>
+                            <option value='2021'>2021</option>
+                            <option value='2022'>2022</option>
+
+                        </select>
+
+                    </div>
+                    <BUTton style="margin-left: 15px;" onclick="final630()">Calcular</BUTton>
+                </div>
+                <div class="col-1 row" style="padding: 5px;">
+                    <div class="col-12">
+                        <h4>Resultado con RH</H4>
+                        <input id="rRH" type="number" readonly>
+
+                    </div>
+
+                    <div class="col-12">
+                        <h4>Percibido sin RH</H4>
+                        <input id="rSRH" type="number">
+                    </div>
+                </div>
+
+            </div>
 
 </body>
 
