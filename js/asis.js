@@ -890,19 +890,24 @@ function nvoHaberFad(pbu, pc, pap, pComp, pBen, coeficiente) {
     }
     document.getElementById("nHFad").value = (Number(document.getElementById("npbu").value) + Number(document.getElementById("npc").value) + Number(document.getElementById("npap").value)).toFixed(2)
 
+	if (perActRh.indexOf(document.getElementById("FAD").value) < 150) {
+
     h2007=badaroProporcional(document.getElementById("nHFad").value,document.getElementById("FAD").value)
     console.log(document.getElementById("FAD").value)
 
     document.getElementById("r082016").value=Calcular('12','2006','08','2016',h2007)
-    console.log(pComp)
-    console.log(pBen)
+	} else {
+	
+	h2007=document.getElementById("nHFad").value
+	document.getElementById("r082016").value=Calcular(document.getElementById("FAD").value.slice(4,6),document.getElementById("FAD").value.slice(0,4),'08','2016',h2007)
+	}
 }
 
 function badaroProporcional(haber, período) {
     resBadaro = 0
     nCoefBadaro = 0
     nCoefBadaro = perActRh.indexOf(período) - 90
-    if (perActRh.indexOf(período) < 78) {
+    if (perActRh.indexOf(período) < 90) {
         resBadaro = haber * 1.885589771
     } else {
         switch (período.slice(0, 4)) {
@@ -956,3 +961,101 @@ function final630(mhasta,ahasta,monto,monto2) {
     document.getElementById("rSRH").value=Calcular('08','2016',mhasta,ahasta,monto2)
 
 }
+
+function liquidarTablaRH(mes, año, mHasta, aHasta, monto, montoA) {
+    // window.open("tabla.html")
+    // window.location.href='tabla.html'
+    var fechaDesde = año + mes + "01"
+    var fechaHasta = aHasta + mHasta + "01"
+    var nro = nPer.indexOf(fechaDesde)
+    var nFin = nPer.indexOf(fechaHasta)
+    var cantFilas = nFin - nro + 3
+    var importe = monto
+    var importeA = montoA
+    var dif = 0
+    // let liq = Array()
+
+    // Obtenemos la referencia del elemento body
+    var body = document.getElementById("tablaLiq");
+    // Creamos un elemento <table> y un elemento <tbody>
+    var tabla = document.createElement("table");
+    var tblBody = document.createElement("tbody");
+
+
+
+    // Creamos las celdas
+    for (var i = 0; i < cantFilas; i++) {
+        // Creamos las hileras de la tabla
+        var fila = document.createElement("tr");
+        for (var j = 0; j < 4; j++) {
+            // Crea un elemento <td> y un nodo de texto, hace que el nodo de
+            // texto sea el contenido de <td>, ubica el elemento <td> al final
+            // de la hilera de la tabla
+            var celda = document.createElement("td");
+            var textoCelda = document.createTextNode(i + " - " + j);
+            celda.appendChild(textoCelda);
+            fila.appendChild(celda);
+        }
+        // agregamos la hilera al final de la tabla (al final del elemento tblbody)
+        tblBody.appendChild(fila);
+    }
+    // posicionamos el <tbody> debajo del elemento <table>
+    tabla.appendChild(tblBody);
+    // appends <table> into <body>
+    body.appendChild(tabla);
+    // modifica el atributo "border" de la tabla y lo fija a "2";
+    tabla.setAttribute("border", 2);
+    tabla.setAttribute("id", "tabla");
+    // tabla.setAttribute("text-align:right");
+
+    var result = document.getElementById("resultado");
+    // result.appendChild(tabla);
+
+    // pongo los títulos
+    var cuenta = 0
+    document.getElementById("tabla").rows[cuenta].cells[1].textContent = "Percibido";
+    document.getElementById("tabla").rows[cuenta].cells[2].textContent = "Haber Recompuesto";
+    document.getElementById("tabla").rows[cuenta].cells[3].textContent = "001-020";
+    document.getElementById("tabla").rows[cuenta].cells[0].textContent = "Período";
+    cuenta = cuenta + 1
+
+    var totimp = 0
+    var totimpA = 0
+    var totDif = 0
+
+    if (nro < nFin) {
+        // nro=nro+1;
+        do {
+            importe = importe * coeficienteMovilidad[nro];
+            importeA = importeA * coeficienteMovilidad[nro];
+            dif = importeA - importe
+            if (nro == 194) {
+                importe = importe + 1500;
+                importeA = importeA + 1500;
+            }
+            document.getElementById("tabla").rows[cuenta].cells[1].textContent = importe.toFixed(2).replace(".", ",");
+            document.getElementById("tabla").rows[cuenta].cells[2].textContent = importeA.toFixed(2).replace(".", ",");
+            document.getElementById("tabla").rows[cuenta].cells[3].textContent = dif.toFixed(2).replace(".", ",");
+            document.getElementById("tabla").rows[cuenta].cells[0].textContent = nPer[nro].substring(4, 6) + "-" + nPer[nro].substring(0, 4);
+
+            var totimp = totimp + importe
+            var totimpA = totimpA + importeA
+            var totDif = totDif + dif
+
+            liq.push(importe.toFixed(2));
+            nro = nro + 1;
+            cuenta = cuenta + 1;
+        }
+        while (nro < nFin + 1);
+    }
+    // ESCRIBO LOS TOTALES
+    document.getElementById("tabla").rows[cuenta].cells[1].textContent = totimp.toFixed(2).replace(".", ",");;
+    document.getElementById("tabla").rows[cuenta].cells[2].textContent = totimpA.toFixed(2).replace(".", ",");;
+    document.getElementById("tabla").rows[cuenta].cells[3].textContent = totDif.toFixed(2).replace(".", ",");;
+    document.getElementById("tabla").rows[cuenta].cells[0].textContent = "TOTALES";
+    // window.scroll(0, 150)
+    console.log(liq);
+    // window.open("tabla.html")
+    // loadLiquidación();
+}
+

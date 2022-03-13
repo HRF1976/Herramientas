@@ -95,7 +95,7 @@
             </div>
             <div class="col-2 row" style="padding: 5px;">
                 <h4>Resultado al 08/2016</h4>
-                <input id="res082016" type="number" readonly>
+                <input class="info" id="res082016" type="number" readonly>
 
             </div>
         </div>
@@ -152,7 +152,7 @@
             <div class="col-12" style="padding: 5px;">
                 <div class="col-4" style="padding: 5px;">
                     <h4 style="vertical-align: middle; margin: 5px;">Resultado</h4>
-                    <input type="number" id="result" readonly>
+                    <input class="info" type="number" id="result" readonly>
 
                 </div>
 
@@ -519,7 +519,7 @@
                 <div class="col-1 row" style="padding: 5px;">
                     <div class="col-12">
                         <h4>Coeficiente</H4>
-                        <input id="coef" type="text" readonly>
+                        <input class="info" id="coef" type="text" readonly>
                         <button id="nvaPCPAP" style="margin-top:30px;" onclick="nvoHaberFad()">Aplicar</button>
                     </div>
                 </div>
@@ -527,18 +527,18 @@
                 <div class="col-1 row" style="padding: 5px;">
                     <div class="col-12">
                         <h4>Nueva PBU</H4>
-                        <input id="npbu" type="number" readonly>
+                        <input class="info" id="npbu" type="number" readonly>
                         <h4>Nueva PC</H4>
-                        <input id="npc" type="number" readonly>
+                        <input class="info" id="npc" type="number" readonly>
                         <h4>Nueva PAP</H4>
-                        <input id="npap" type="number" readonly>
+                        <input class="info" id="npap" type="number" readonly>
                     </div>
                 </div>
 
                 <div class="col-1 row" style="padding: 5px;">
                     <div class="col-12">
                         <h4>Nuevo Haber FAD</H4>
-                        <input id="nHFad" type="number" readonly>
+                        <input class="info" id="nHFad" type="number" readonly>
 
                     </div>
                 </div>
@@ -551,8 +551,8 @@
                 <hr>
                 <div class="col-1 row" style="padding: 5px;">
                     <div class="col-12">
-                        <h4>Resultado 08/2016</H4>
-                        <input id="r082016" type="number" readonly>
+                        <h4>Nvo Haber 08/2016</H4>
+                        <input class="info" id="r082016" type="number" readonly>
 
                     </div>
 
@@ -603,21 +603,34 @@
 
                     </div>
                     <BUTton style="margin-left: 15px;" onclick="final630()">Calcular</BUTton>
+			<div class="col-12">
+			<Button onclick="liquidarTablaRH('08','2016', document.getElementById('Omes').value, document.getElementById('Oaño').value, document.getElementById('perc082016').value, document.getElementById('r082016').value)">Ver liquidación</Button>
+			</div>
+			<div class="col-12">
+			<button onclick="document.location.reload()" class="btnBorrar">Borrar</button>
+			</div>
+
                 </div>
                 <div class="col-1 row" style="padding: 5px;">
                     <div class="col-12">
-                        <h4>Resultado con RH</H4>
-                        <input id="rRH" type="number" readonly>
+                        <h4>Haber Recompuesto</command></H4>
+                        <input class="info" id="rRH" type="number" readonly>
 
                     </div>
 
                     <div class="col-12">
                         <h4>Percibido sin RH</H4>
-                        <input id="rSRH" type="number">
+                        <input class="info" id="rSRH" type="number">
                     </div>
                 </div>
 
             </div>
+            </section>
+<hr>
+            <section id="tablaLiq">
+
+            </section>
+
 
 </body>
 
