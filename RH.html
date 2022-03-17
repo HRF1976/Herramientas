@@ -505,6 +505,8 @@
             </div>
 
             <div class="col-12" style="padding: 5px;">
+
+
                 <hr>
                 <div class="col-1 row" style="padding: 5px;">
                     <div class="col-12">
@@ -532,6 +534,7 @@
                         <input class="info" id="npc" type="number" readonly>
                         <h4>Nueva PAP</H4>
                         <input class="info" id="npap" type="number" readonly>
+
                     </div>
                 </div>
 
@@ -546,8 +549,11 @@
                 <div class="col-1 row" style="padding: 5px;">
                 </div>
             </div>
+
             <hr>
             <div class="col-12" style="padding: 5px;">
+                <input type="checkbox" id="cbox1" value="Convertir" style="height:15px; width:15px">Convertir PAP de
+                0,85 a 1,5%</input>
                 <hr>
                 <div class="col-1 row" style="padding: 5px;">
                     <div class="col-12">
@@ -603,17 +609,20 @@
 
                     </div>
                     <BUTton style="margin-left: 15px;" onclick="final630()">Calcular</BUTton>
-			<div class="col-12">
-			<Button onclick="liquidarTablaRH('08','2016', document.getElementById('Omes').value, document.getElementById('Oaño').value, document.getElementById('perc082016').value, document.getElementById('r082016').value)">Ver liquidación</Button>
-			</div>
-			<div class="col-12">
-			<button onclick="document.location.reload()" class="btnBorrar">Borrar</button>
-			</div>
+                    <div class="col-12">
+                        <Button
+                            onclick="liquidarTablaRH('08','2016', document.getElementById('Omes').value, document.getElementById('Oaño').value, document.getElementById('perc082016').value, document.getElementById('r082016').value)">Ver
+                            liquidación</Button>
+                    </div>
+                    <div class="col-12">
+                        <button onclick="document.location.reload()" class="btnBorrar">Borrar</button>
+                    </div>
 
                 </div>
                 <div class="col-1 row" style="padding: 5px;">
                     <div class="col-12">
-                        <h4>Haber Recompuesto</command></H4>
+                        <h4>Haber Recompuesto</command>
+                        </H4>
                         <input class="info" id="rRH" type="number" readonly>
 
                     </div>
@@ -625,11 +634,352 @@
                 </div>
 
             </div>
-            </section>
-<hr>
-            <section id="tablaLiq">
+    </section>
+    <hr>
+    <section id="tablaLiq">
 
-            </section>
+    </section>
+    <!__--------------------------------------sección badaro __>
+        <section id="badaro">
+            <div class="col-12 header" style="padding: 5px; background-color:grey;">
+                <h1>Sólo Badaro (proporcional o puro) + aumentos LG</h1>
+
+            </div>
+            <div class="col-12">
+                <div class="col-2 row" style="padding: 5px;">
+                    <div class="col-12">
+                        <h4>Importe</h4>
+                        <input class="col-12" id="impB"></input>
+                    </div>
+                </div>
+                <div class="col-2 row" style="padding: 5px;">
+                    <div class="col-12">
+                        <h4>Fecha haber</h4>
+                        <select class="col-12" id="FADB">
+                            <option value=199407>07-1994</option>
+                            <option value=199408>08-1994</option>
+                            <option value=199409>09-1994</option>
+                            <option value=199410>10-1994</option>
+                            <option value=199411>11-1994</option>
+                            <option value=199412>12-1994</option>
+                            <option value=199501>01-1995</option>
+                            <option value=199502>02-1995</option>
+                            <option value=199503>03-1995</option>
+                            <option value=199504>04-1995</option>
+                            <option value=199505>05-1995</option>
+                            <option value=199506>06-1995</option>
+                            <option value=199507>07-1995</option>
+                            <option value=199508>08-1995</option>
+                            <option value=199509>09-1995</option>
+                            <option value=199510>10-1995</option>
+                            <option value=199511>11-1995</option>
+                            <option value=199512>12-1995</option>
+                            <option value=199601>01-1996</option>
+                            <option value=199602>02-1996</option>
+                            <option value=199603>03-1996</option>
+                            <option value=199604>04-1996</option>
+                            <option value=199605>05-1996</option>
+                            <option value=199606>06-1996</option>
+                            <option value=199607>07-1996</option>
+                            <option value=199608>08-1996</option>
+                            <option value=199609>09-1996</option>
+                            <option value=199610>10-1996</option>
+                            <option value=199611>11-1996</option>
+                            <option value=199612>12-1996</option>
+                            <option value=199701>01-1997</option>
+                            <option value=199702>02-1997</option>
+                            <option value=199703>03-1997</option>
+                            <option value=199704>04-1997</option>
+                            <option value=199705>05-1997</option>
+                            <option value=199706>06-1997</option>
+                            <option value=199707>07-1997</option>
+                            <option value=199708>08-1997</option>
+                            <option value=199709>09-1997</option>
+                            <option value=199710>10-1997</option>
+                            <option value=199711>11-1997</option>
+                            <option value=199712>12-1997</option>
+                            <option value=199801>01-1998</option>
+                            <option value=199802>02-1998</option>
+                            <option value=199803>03-1998</option>
+                            <option value=199804>04-1998</option>
+                            <option value=199805>05-1998</option>
+                            <option value=199806>06-1998</option>
+                            <option value=199807>07-1998</option>
+                            <option value=199808>08-1998</option>
+                            <option value=199809>09-1998</option>
+                            <option value=199810>10-1998</option>
+                            <option value=199811>11-1998</option>
+                            <option value=199812>12-1998</option>
+                            <option value=199901>01-1999</option>
+                            <option value=199902>02-1999</option>
+                            <option value=199903>03-1999</option>
+                            <option value=199904>04-1999</option>
+                            <option value=199905>05-1999</option>
+                            <option value=199906>06-1999</option>
+                            <option value=199907>07-1999</option>
+                            <option value=199908>08-1999</option>
+                            <option value=199909>09-1999</option>
+                            <option value=199910>10-1999</option>
+                            <option value=199911>11-1999</option>
+                            <option value=199912>12-1999</option>
+                            <option value=200001>01-2000</option>
+                            <option value=200002>02-2000</option>
+                            <option value=200003>03-2000</option>
+                            <option value=200004>04-2000</option>
+                            <option value=200005>05-2000</option>
+                            <option value=200006>06-2000</option>
+                            <option value=200007>07-2000</option>
+                            <option value=200008>08-2000</option>
+                            <option value=200009>09-2000</option>
+                            <option value=200010>10-2000</option>
+                            <option value=200011>11-2000</option>
+                            <option value=200012>12-2000</option>
+                            <option value=200101>01-2001</option>
+                            <option value=200102>02-2001</option>
+                            <option value=200103>03-2001</option>
+                            <option value=200104>04-2001</option>
+                            <option value=200105>05-2001</option>
+                            <option value=200106>06-2001</option>
+                            <option value=200107>07-2001</option>
+                            <option value=200108>08-2001</option>
+                            <option value=200109>09-2001</option>
+                            <option value=200110>10-2001</option>
+                            <option value=200111>11-2001</option>
+                            <option value=200112>12-2001</option>
+                            <option value=200201>01-2002</option>
+                            <option value=200202>02-2002</option>
+                            <option value=200203>03-2002</option>
+                            <option value=200204>04-2002</option>
+                            <option value=200205>05-2002</option>
+                            <option value=200206>06-2002</option>
+                            <option value=200207>07-2002</option>
+                            <option value=200208>08-2002</option>
+                            <option value=200209>09-2002</option>
+                            <option value=200210>10-2002</option>
+                            <option value=200211>11-2002</option>
+                            <option value=200212>12-2002</option>
+                            <option value=200301>01-2003</option>
+                            <option value=200302>02-2003</option>
+                            <option value=200303>03-2003</option>
+                            <option value=200304>04-2003</option>
+                            <option value=200305>05-2003</option>
+                            <option value=200306>06-2003</option>
+                            <option value=200307>07-2003</option>
+                            <option value=200308>08-2003</option>
+                            <option value=200309>09-2003</option>
+                            <option value=200310>10-2003</option>
+                            <option value=200311>11-2003</option>
+                            <option value=200312>12-2003</option>
+                            <option value=200401>01-2004</option>
+                            <option value=200402>02-2004</option>
+                            <option value=200403>03-2004</option>
+                            <option value=200404>04-2004</option>
+                            <option value=200405>05-2004</option>
+                            <option value=200406>06-2004</option>
+                            <option value=200407>07-2004</option>
+                            <option value=200408>08-2004</option>
+                            <option value=200409>09-2004</option>
+                            <option value=200410>10-2004</option>
+                            <option value=200411>11-2004</option>
+                            <option value=200412>12-2004</option>
+                            <option value=200501>01-2005</option>
+                            <option value=200502>02-2005</option>
+                            <option value=200503>03-2005</option>
+                            <option value=200504>04-2005</option>
+                            <option value=200505>05-2005</option>
+                            <option value=200506>06-2005</option>
+                            <option value=200507>07-2005</option>
+                            <option value=200508>08-2005</option>
+                            <option value=200509>09-2005</option>
+                            <option value=200510>10-2005</option>
+                            <option value=200511>11-2005</option>
+                            <option value=200512>12-2005</option>
+                            <option value=200601>01-2006</option>
+                            <option value=200602>02-2006</option>
+                            <option value=200603>03-2006</option>
+                            <option value=200604>04-2006</option>
+                            <option value=200605>05-2006</option>
+                            <option value=200606>06-2006</option>
+                            <option value=200607>07-2006</option>
+                            <option value=200608>08-2006</option>
+                            <option value=200609>09-2006</option>
+                            <option value=200610>10-2006</option>
+                            <option value=200611>11-2006</option>
+                            <option value=200612>12-2006</option>
+                            <option value=200701>01-2007</option>
+                            <option value=200702>02-2007</option>
+                            <option value=200703>03-2007</option>
+                            <option value=200704>04-2007</option>
+                            <option value=200705>05-2007</option>
+                            <option value=200706>06-2007</option>
+                            <option value=200707>07-2007</option>
+                            <option value=200708>08-2007</option>
+                            <option value=200709>09-2007</option>
+                            <option value=200710>10-2007</option>
+                            <option value=200711>11-2007</option>
+                            <option value=200712>12-2007</option>
+                            <option value=200801>01-2008</option>
+                            <option value=200802>02-2008</option>
+                            <option value=200803>03-2008</option>
+                            <option value=200804>04-2008</option>
+                            <option value=200805>05-2008</option>
+                            <option value=200806>06-2008</option>
+                            <option value=200807>07-2008</option>
+                            <option value=200808>08-2008</option>
+                            <option value=200809>09-2008</option>
+                            <option value=200810>10-2008</option>
+                            <option value=200811>11-2008</option>
+                            <option value=200812>12-2008</option>
+                            <option value=200901>01-2009</option>
+                            <option value=200902>02-2009</option>
+                            <option value=200903>03-2009</option>
+                            <option value=200904>04-2009</option>
+                            <option value=200905>05-2009</option>
+                            <option value=200906>06-2009</option>
+                            <option value=200907>07-2009</option>
+                            <option value=200908>08-2009</option>
+                            <option value=200909>09-2009</option>
+                            <option value=200910>10-2009</option>
+                            <option value=200911>11-2009</option>
+                            <option value=200912>12-2009</option>
+                            <option value=201001>01-2010</option>
+                            <option value=201002>02-2010</option>
+                            <option value=201003>03-2010</option>
+                            <option value=201004>04-2010</option>
+                            <option value=201005>05-2010</option>
+                            <option value=201006>06-2010</option>
+                            <option value=201007>07-2010</option>
+                            <option value=201008>08-2010</option>
+                            <option value=201009>09-2010</option>
+                            <option value=201010>10-2010</option>
+                            <option value=201011>11-2010</option>
+                            <option value=201012>12-2010</option>
+                            <option value=201101>01-2011</option>
+                            <option value=201102>02-2011</option>
+                            <option value=201103>03-2011</option>
+                            <option value=201104>04-2011</option>
+                            <option value=201105>05-2011</option>
+                            <option value=201106>06-2011</option>
+                            <option value=201107>07-2011</option>
+                            <option value=201108>08-2011</option>
+                            <option value=201109>09-2011</option>
+                            <option value=201110>10-2011</option>
+                            <option value=201111>11-2011</option>
+                            <option value=201112>12-2011</option>
+                            <option value=201201>01-2012</option>
+                            <option value=201202>02-2012</option>
+                            <option value=201203>03-2012</option>
+                            <option value=201204>04-2012</option>
+                            <option value=201205>05-2012</option>
+                            <option value=201206>06-2012</option>
+                            <option value=201207>07-2012</option>
+                            <option value=201208>08-2012</option>
+                            <option value=201209>09-2012</option>
+                            <option value=201210>10-2012</option>
+                            <option value=201211>11-2012</option>
+                            <option value=201212>12-2012</option>
+                            <option value=201301>01-2013</option>
+                            <option value=201302>02-2013</option>
+                            <option value=201303>03-2013</option>
+                            <option value=201304>04-2013</option>
+                            <option value=201305>05-2013</option>
+                            <option value=201306>06-2013</option>
+                            <option value=201307>07-2013</option>
+                            <option value=201308>08-2013</option>
+                            <option value=201309>09-2013</option>
+                            <option value=201310>10-2013</option>
+                            <option value=201311>11-2013</option>
+                            <option value=201312>12-2013</option>
+                            <option value=201401>01-2014</option>
+                            <option value=201402>02-2014</option>
+                            <option value=201403>03-2014</option>
+                            <option value=201404>04-2014</option>
+                            <option value=201405>05-2014</option>
+                            <option value=201406>06-2014</option>
+                            <option value=201407>07-2014</option>
+                            <option value=201408>08-2014</option>
+                            <option value=201409>09-2014</option>
+                            <option value=201410>10-2014</option>
+                            <option value=201411>11-2014</option>
+                            <option value=201412>12-2014</option>
+                            <option value=201501>01-2015</option>
+                            <option value=201502>02-2015</option>
+                            <option value=201503>03-2015</option>
+                            <option value=201504>04-2015</option>
+                            <option value=201505>05-2015</option>
+                            <option value=201506>06-2015</option>
+                            <option value=201507>07-2015</option>
+                            <option value=201508>08-2015</option>
+                            <option value=201509>09-2015</option>
+                            <option value=201510>10-2015</option>
+                            <option value=201511>11-2015</option>
+                            <option value=201512>12-2015</option>
+                            <option value=201601>01-2016</option>
+                            <option value=201602>02-2016</option>
+                            <option value=201603>03-2016</option>
+                            <option value=201604>04-2016</option>
+                            <option value=201605>05-2016</option>
+                            <option value=201606>06-2016</option>
+                            <option value=201607>07-2016</option>
+                            <option value=201608>08-2016</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="col-3 row" style="padding: 5px;">
+                    <div class="col-12">
+                        <h4>Fecha destino</h4>
+                        <select class="col-6" name="mesB" id="mesB">
+                            <option value="01">Enero</option>
+                            <option value="02">Febrero</option>
+                            <option value="03">Marzo</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Mayo</option>
+                            <option value="06">Junio</option>
+                            <option value="07">Julio</option>
+                            <option value="08">Agosto</option>
+                            <option value="09">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                        <select name="año" class="col-6" id="añoB">
+                            <option value="2004">2004</option>
+                            <option value="2005">2005</option>
+                            <option value="2006">2006</option>
+                            <option value="2007">2007</option>
+                            <option value="2008">2008</option>
+                            <option value="2009">2009</option>
+                            <option value="2010">2010</option>
+                            <option value="2011">2011</option>
+                            <option value="2012">2012</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+
+                        </select>
+
+                    </div>
+                    <div class="col-12">
+                        <button onclick="soloBadaro()">Calcular</>
+                    </div>
+                </div>
+
+                <div class="col-2 row" style="padding: 5px;">
+                    <div class="col-12">
+                        <h4>Resultado</h4>
+                        <input class="col-12 info" id="resB" readonly></input>
+                    </div>
+                </div>
+            </div>
 
 
 </body>

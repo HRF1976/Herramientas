@@ -861,13 +861,22 @@ function actualizarPrestación(fad, pComp, pBen, pbu, pc, pap) {
     var nroA = perActRh.indexOf(fad)
     if (document.getElementById("prestación").value == "Jubi") {
         document.getElementById("coef").value = actJubi[nroA];
-
+        if (perActRh.indexOf(document.getElementById("FAD").value) > 155) {
+            document.getElementById("cbox1").checked = false
+        } else {
+            document.getElementById("cbox1").checked = true
+        }
     } else {
         document.getElementById("coef").value = actRTI[nroA];
-
+        if (perActRh.indexOf(document.getElementById("FAD").value) > 155) {
+            document.getElementById("cbox1").checked = false
+        } else {
+            document.getElementById("cbox1").checked = true
+        }
     }
 
     console.log(Number(actJubi[nroA].replace(",", ".")) + 1);
+
 
 }
 
@@ -878,29 +887,29 @@ function nvoHaberFad(pbu, pc, pap, pComp, pBen, coeficiente) {
     pComp = Number(document.getElementById("porcBenef3").value)
     pBen = Number(document.getElementById("porcBenef4").value)
     coeficiente = Number(document.getElementById("coef").value.replace(",", "."))
-    h2007=0
+    h2007 = 0
 
     document.getElementById("npbu").value = pbu * pComp
     document.getElementById("npc").value = (pc * pComp * pBen * coeficiente).toFixed(2)
-    if (perActRh.indexOf(document.getElementById("FAD").value) > 155) {
+    if (document.getElementById("cbox1").checked == false) {
         document.getElementById("npap").value = (pap * pComp * pBen * coeficiente).toFixed(2)
 
     } else {
         document.getElementById("npap").value = (pap / 0.85 * 1.5 * pComp * pBen * coeficiente).toFixed(2)
+
     }
     document.getElementById("nHFad").value = (Number(document.getElementById("npbu").value) + Number(document.getElementById("npc").value) + Number(document.getElementById("npap").value)).toFixed(2)
 
-	if (perActRh.indexOf(document.getElementById("FAD").value) < 150) {
+    if (perActRh.indexOf(document.getElementById("FAD").value) < 150) {
 
-    h2007=badaroProporcional(document.getElementById("nHFad").value,document.getElementById("FAD").value)
-    console.log(document.getElementById("FAD").value)
+        h2007 = badaroProporcional(document.getElementById("nHFad").value, document.getElementById("FAD").value)
 
-    document.getElementById("r082016").value=Calcular('12','2006','08','2016',h2007)
-	} else {
-	
-	h2007=document.getElementById("nHFad").value
-	document.getElementById("r082016").value=Calcular(document.getElementById("FAD").value.slice(4,6),document.getElementById("FAD").value.slice(0,4),'08','2016',h2007)
-	}
+        document.getElementById("r082016").value = Calcular('12', '2006', '08', '2016', h2007)
+    } else {
+
+        h2007 = document.getElementById("nHFad").value
+        document.getElementById("r082016").value = Calcular(document.getElementById("FAD").value.slice(4, 6), document.getElementById("FAD").value.slice(0, 4), '08', '2016', h2007)
+    }
 }
 
 function badaroProporcional(haber, período) {
@@ -912,34 +921,34 @@ function badaroProporcional(haber, período) {
     } else {
         switch (período.slice(0, 4)) {
             case '2002':
-                resBadaro = haber * (111.0736341 / Number(coefBadaro[nCoefBadaro])) * 1.752588136
+                resBadaro = haber * (107.589 / Number(coefBadaro[nCoefBadaro])) * 1.752588136
                 break;
             case '2003':
                 if (período.slice(4, 6) == "01") {
                     resBadaro = haber * 1.752588136
                 } else {
-                    resBadaro = haber * (123.7220269 / Number(coefBadaro[nCoefBadaro])) * 1.563822695
+                    resBadaro = haber * (120.576 / Number(coefBadaro[nCoefBadaro])) * 1.563822695
                 }
                 break;
             case '2004':
                 if (período.slice(4, 6) == "01") {
                     resBadaro = haber * 1.563822695
                 } else {
-                    resBadaro = haber * (136.6509862 / Number(coefBadaro[nCoefBadaro])) * 1.430479543
+                    resBadaro = haber * (131.815 / Number(coefBadaro[nCoefBadaro])) * 1.430479543
                 }
                 break;
             case '2005':
                 if (período.slice(4, 6) == "01") {
                     resBadaro = haber * 1.430479543
                 } else {
-                    resBadaro = haber * (161.2658761 / Number(coefBadaro[nCoefBadaro])) * 1.1889457
+                    resBadaro = haber * (158.593 / Number(coefBadaro[nCoefBadaro])) * 1.1889457
                 }
                 break;
             case '2006':
                 if (período.slice(4, 6) == "01") {
                     resBadaro = haber * 1.1889457
                 } else {
-                    resBadaro = haber * (191.005812 / Number(coefBadaro[nCoefBadaro]))
+                    resBadaro = haber * (188.559 / Number(coefBadaro[nCoefBadaro]))
                 }
 
                 break;
@@ -951,14 +960,14 @@ function badaroProporcional(haber, período) {
 
 }
 
-function final630(mhasta,ahasta,monto,monto2) {
-    mhasta=document.getElementById("Omes").value
-    ahasta=document.getElementById("Oaño").value
-    monto=document.getElementById("r082016").value
-    monto2=document.getElementById("perc082016").value
+function final630(mhasta, ahasta, monto, monto2) {
+    mhasta = document.getElementById("Omes").value
+    ahasta = document.getElementById("Oaño").value
+    monto = document.getElementById("r082016").value
+    monto2 = document.getElementById("perc082016").value
 
-    document.getElementById("rRH").value=Calcular('08','2016',mhasta,ahasta,monto)
-    document.getElementById("rSRH").value=Calcular('08','2016',mhasta,ahasta,monto2)
+    document.getElementById("rRH").value = Calcular('08', '2016', mhasta, ahasta, monto)
+    document.getElementById("rSRH").value = Calcular('08', '2016', mhasta, ahasta, monto2)
 
 }
 
@@ -1059,3 +1068,7 @@ function liquidarTablaRH(mes, año, mHasta, aHasta, monto, montoA) {
     // loadLiquidación();
 }
 
+function soloBadaro() {
+    h2007 = badaroProporcional(document.getElementById("impB").value, document.getElementById("FADB").value);
+    document.getElementById("resB").value = Calcular('12', '2006', document.getElementById("mesB").value, document.getElementById("añoB").value, h2007);
+}
